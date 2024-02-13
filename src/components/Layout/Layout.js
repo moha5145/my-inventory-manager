@@ -15,9 +15,9 @@ const Layout = () => {
           <div className=' h-48 w-full'>
             <Header />
           </div>
-          <div className='px-10 relative w-full '>
-            <div className='absolute w-[calc(100%-80px)] -top-20'>
-              <div className='h-[calc(100vh-150px)] w-full p-6 bg-white'>
+          <div className='px-3 md:px-10 relative w-full '>
+            <div className='absolute w-[calc(100%-25px)] md:w-[calc(100%-80px)] -top-20'>
+              <div className='h-[calc(100vh-150px)] w-full p-6 bg-white rounded-md'>
                 <Outlet />
               </div>
             </div>
