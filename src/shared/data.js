@@ -1,4 +1,4 @@
-import { MdHome, MdPerson, MdPerson2, MdOutlineDevicesOther, MdCategory, MdDashboard, MdDocumentScanner, MdOutlineSettings } from "react-icons/md";
+import { MdPerson, MdPerson2, MdOutlineDevicesOther, MdCategory, MdDashboard, MdDocumentScanner, MdOutlineSettings } from "react-icons/md";
 import { TbDeviceDesktopDown, TbDeviceDesktopShare } from "react-icons/tb";
 export const data = [
     { name: "Users", path: '/users', icon: MdPerson2 },

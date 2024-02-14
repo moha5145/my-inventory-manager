@@ -10,9 +10,10 @@ const Home = () => {
         {data.map((item, index) => {
           return (
             <Link to={item.path} key={item.path}
-              className="flex justify-center items-center h-[100%]
+              className="flex flex-col justify-center items-center gap-2 h-[100%]
                 flex-1 bg-slate-100 hover:opacity-50 cursor-pointer rounded-md shadow-sm"
                 >
+              <item.icon size={90}/>
               <h2>{item.name}</h2>
             </Link>
           )

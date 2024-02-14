@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { initialState, itemsReducer } from './usesrsReducer';
+import { initialState, itemsReducer } from './itemsReducer';
 
 export const ItemsContext = createContext();
 

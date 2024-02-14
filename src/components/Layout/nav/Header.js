@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+import { MdMenu } from "react-icons/md";
+
+const Header = ({show, setShow}) => {
   return (
     <div className="bg-blue-500 flex-1 px-5 h-52 py-10 text-white">
-      <Link to="/">Header</Link>   
+      <Link to="/">My Invontery Manager</Link>  
+      <div className='md:hidden' onClick={() => setShow(!show)}>
+        <MdMenu />
+      </div> 
     </div>
   );
 };
