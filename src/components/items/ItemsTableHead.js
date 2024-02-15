@@ -4,16 +4,16 @@ const tHeaderText = ["#", "Name", "Brand", "Category", "Model", "Purchase $", "P
 
 const TableHeader = () => {
   return tHeaderText.map((text, index) => {
-    return <th key={index} className='h-12 p-3 text-left mb-[0.015rem]'>{text}</th>;
+    return <th key={index} className='h-12 p-3 text-left text-xs sm:text-md mb-[0.015rem]'>{text}</th>;
   });
 };
 
 const ItemsTableHead = ({itemsState}) => {
   return (
-    <thead class="text-white flex-1">
+    <thead className="text-white flex-1">
         { itemsState.items.map((_, index) => {
           return ( 
-            <tr key={index} className="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
+            <tr key={index} className="bg-blue-400 flex flex-col flex-no wrap justify-center sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
               <TableHeader />
             </tr>
           )})

@@ -6,7 +6,6 @@ const ItemsPage = () => {
   return (
     <section>
       <ItemsProvider>
-        <p>ItemsPage</p>
         <Items />
       </ItemsProvider>
     </section>
