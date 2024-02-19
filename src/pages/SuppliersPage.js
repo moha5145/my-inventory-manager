@@ -7,7 +7,6 @@ const SuppliersPage = () => {
   return (
     <div>
         <SuppliersProvider>
-            <p>hello world</p>
             <Suppliers />
         </SuppliersProvider>
     </div>

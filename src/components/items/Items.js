@@ -1,4 +1,3 @@
-import './items.css'
 import React, { useContext } from 'react';
 
 import { ItemsContext } from '../../context-and-reducer/items/itemsContext';
@@ -11,13 +10,13 @@ const Items = () => {
     const { itemsState, itemsDispatch, handleAddItem, updateItem, deleteItem  } = useContext(ItemsContext);
     
     return (
-        <div className='w-full overflow-x-auto'>
+        <div className='w-full overflow-x-auto '>
             <p>Items</p>
 
             <AddItem handleAddItem={handleAddItem}/>
 
-            <div className="container ">
-                <table className="h-full md:inline-table w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+            <div className="container gap-4">
+                <table className="h-full sm:inline-block w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
                     <ItemsTableHead
                         itemsState={itemsState}
                     />

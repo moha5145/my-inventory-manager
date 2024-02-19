@@ -1,9 +1,10 @@
 import React from 'react';
 import { TextInput } from '../../shared/CustomInputs';
+import SearchBlock from './SearchBlock';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
-        <td className='border-grey-light border hover:bg-gray-100 h-12 leading-10'>
+        <td className='border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
             { editing ? (
                 <TextInput
                     type={type}
@@ -24,6 +25,7 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
 const ItemsTableBody = ({itemsState, itemsDispatch, updateItem, deleteItem}) => {
   return (
     <tbody className='flex-1 sm:flex-none'>
+        {/* <SearchBlock /> */}
         { itemsState.items.map((item, index) => {
 
             return (       
@@ -123,11 +125,11 @@ const ItemsTableBody = ({itemsState, itemsDispatch, updateItem, deleteItem}) => 
                     />
 
                     
-                    <td className='border-grey-light border hover:bg-gray-100 p-3 pb-[12.75px]'>
+                    <td className='border-grey-light border hover:bg-gray-100  pb-0'>
                         <div className="flex justify-center gap-1">
                             { !item.editing ?
                                 <button 
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded"
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 px-4 rounded-md"
                                     onClick={() => {
                                         updateItem(!item.editing, index, "editing")
                                     }} 
@@ -137,7 +139,7 @@ const ItemsTableBody = ({itemsState, itemsDispatch, updateItem, deleteItem}) => 
                                 :
                             
                                 <button 
-                                    className="bg-orange-500 hover:opacity-60 text-white font-bold px-4 rounded"
+                                    className="bg-orange-500 hover:opacity-60 text-white font-bold p-3 px-4 rounded-md"
                                     onClick={() => updateItem(!item.editing, index, "editing")} 
                                 >
                                     save
@@ -147,7 +149,7 @@ const ItemsTableBody = ({itemsState, itemsDispatch, updateItem, deleteItem}) => 
 
                             <button
                                 onClick={() => deleteItem(index)}
-                                className="bg-red-400 hover:opacity-60 text-white font-bold px-4 rounded">
+                                className="bg-red-400 hover:opacity-60 text-white font-bold px-4 rounded-md">
                                 Delete
                             </button>
                         </div>

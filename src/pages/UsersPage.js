@@ -1,6 +1,6 @@
 import React from 'react';
 import { UsersProvider } from '../context-and-reducer/users/usersContext';
-import Users from '../components/Users';
+import Users from '../components/users/Users';
 
 const UsersPage = () => {
   return (
