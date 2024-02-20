@@ -11,12 +11,12 @@ const Items = () => {
     
     return (
         <div className='w-full overflow-x-auto '>
-            <p>Items</p>
 
             <AddItem handleAddItem={handleAddItem}/>
 
-            <div className="container gap-4">
-                <table className="h-full sm:inline-block w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+            <div className="container gap-4 mt-10 sm:mt-0">
+                <p className='sm:hidden text-2xl'>Items List</p>
+                <table className="h-full sm:inline-block w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg sm:shadow-lg my-5">
                     <ItemsTableHead
                         itemsState={itemsState}
                     />

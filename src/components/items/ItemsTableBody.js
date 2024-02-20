@@ -1,10 +1,10 @@
 import React from 'react';
+
 import { TextInput } from '../../shared/CustomInputs';
-import SearchBlock from './SearchBlock';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
-        <td className='border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+        <td className='min-w-[6rem] border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
             { editing ? (
                 <TextInput
                     type={type}
@@ -22,17 +22,15 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
     )
 }
 
-const ItemsTableBody = ({itemsState, itemsDispatch, updateItem, deleteItem}) => {
+const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
   return (
     <tbody className='flex-1 sm:flex-none'>
-        {/* <SearchBlock /> */}
         { itemsState.items.map((item, index) => {
-
             return (       
                 <tr key={index} className='flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 justify-center' >
-                    <TableCell
-                        value ={index+1}
-                    />
+                    <td className=' border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+                        {index+1}
+                    </td>
 
                     <TableCell
                         name="name"

@@ -4,7 +4,7 @@ const TableActions = ({item, deleteUser, updateUser, index}) => {
     return (
         <div className="flex justify-center gap-1 h-12">
                     
-            <button 
+            {/* <button 
                 onClick={() => {
                     const status = item.status === 'Active' ? 'Inactive' : 'Active';
                     updateUser(index, 'status', status)
@@ -13,7 +13,7 @@ const TableActions = ({item, deleteUser, updateUser, index}) => {
                 style={item.status === 'Active' ? {backgroundColor: '#66c08a'} : {backgroundColor: '#ff8138'}}    
             >
                 Status
-            </button>
+            </button> */}
 
             <button 
                 onClick={() => {

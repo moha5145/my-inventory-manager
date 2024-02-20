@@ -14,7 +14,7 @@ const TableHeader = () => {
           </span>
 
           {text !== "#" && text !== "Actions" ?
-          <div className=''>
+          <div className='hidden sm:block'>
             <SearchInput
                 type="text"
                 placeholder="test"
@@ -33,9 +33,9 @@ const TableHeader = () => {
 const ItemsTableHead = ({itemsState}) => {
   return (
     <thead className="text-white flex-1 sm:[&>*:not(:first-child)]:hidden">
-        { itemsState.items.map((_, index) => {
+        { itemsState.items.map((item, index) => {
           return ( 
-            <tr key={index} className="  bg-blue-400 flex flex-col flex-no wrap justify-center sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
+            <tr key={item.id} className="  bg-blue-400 flex flex-col flex-no wrap justify-center sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
               <TableHeader />
             </tr>
           )})

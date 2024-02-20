@@ -14,7 +14,6 @@ const AddItem = ({handleAddItem}) => {
         supplier: '',
         serialNumber: '',
         editing: false, 
-
     });
     
   return (
@@ -36,8 +35,8 @@ const AddItem = ({handleAddItem}) => {
             })
         }}
     >
-      <p>AddItem</p>
-      <div className='md:flex gap-1 border-gray-200 '>
+      <p className='text-2xl mb-3'>AddItem</p>
+      <div className='flex flex-col md:flex-row gap-2 sm:gap-1 border-gray-200 '>
         <TextInput
             placeholder='Name'
             type="text"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SuppliersProvider } from '../context-and-reducer/supplier/supplierContext';
-import Suppliers from '../components/Suppliers';
+import Suppliers from '../components/suppliers/Suppliers';
 
 
 const SuppliersPage = () => {
