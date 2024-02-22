@@ -3,7 +3,7 @@ import { initialState, itemsReducer } from './itemsReducer';
 
 export const ItemsContext = createContext();
 
-export const ItemsProvider = ({children}) => {
+export const ItemsProvider = ({ children }) => {
     const [itemsState, itemsDispatch] = useReducer(itemsReducer, initialState);
 
     const handleAddItem = (item) => {
@@ -29,15 +29,26 @@ export const ItemsProvider = ({children}) => {
         })
     }
 
+    const updateTemporaryNewStock = (element, value) => {
+        const updatedItems = itemsState.items.map((item) => 
+            element.id === item.id ? { ...item, newStock: value } : item
+        );
+        itemsDispatch({
+            type: 'UPDATE_TEMPORARY_STOCK',
+            payload: updatedItems
+        });
+    };
+
     const value = {
         itemsState,
         itemsDispatch,
         handleAddItem,
         updateItem,
-        deleteItem
+        deleteItem,
+        updateTemporaryNewStock
     }
 
-    return (   
+    return (
         <ItemsContext.Provider value={value}>
             {children}
         </ItemsContext.Provider>

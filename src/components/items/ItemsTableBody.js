@@ -93,10 +93,10 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                     />
 
                     <TableCell
-                        name="quantity"
+                        name="Stock"
                         type="number"
-                        placeholder="Quantity"
-                        value ={item.quantity}
+                        placeholder="Stock"
+                        value ={item.stock}
                         editing={item.editing}
                         index={index}
                         updateItem={updateItem}
@@ -143,7 +143,6 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                                     save
                                 </button>
                             }
-
 
                             <button
                                 onClick={() => deleteItem(index)}

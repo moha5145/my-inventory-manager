@@ -18,6 +18,23 @@ export const TextInput = ({placeholder, onChange, value, type, name=''}) => {
   );
 };
 
+export const NumberInput = ({placeholder, onChange, value, type, name='', min=null}) => {
+  return (
+    <div className=' min-w-20 h-10'>
+      <input
+        type={type}
+        min={min}
+        placeholder={placeholder}
+        name={name}
+        autoFocus
+        className='w-full h-full pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400'
+        onChange={onChange}
+        value={value}
+      />
+    </div>
+  );
+};
+
 
 export const DateInput = ({placeholder, onChange, value, type}) => {
   return (

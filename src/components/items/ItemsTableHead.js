@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SearchInput } from '../../shared/CustomInputs';
 
-const tHeaderText = ["#", "Name", "Brand", "Category", "Model", "Purchase $", "Purchase date", "Quantity", "Supplier", "Serial N°", "Actions"];
+const tHeaderText = ["#", "Name", "Brand", "Category", "Model", "Purchase $", "Purchase date", "Stock", "Supplier", "Serial N°", "Actions"];
 
 const TableHeader = () => {
   return tHeaderText.map((text, index) => {
@@ -33,7 +33,7 @@ const TableHeader = () => {
 const ItemsTableHead = ({itemsState}) => {
   return (
     <thead className="text-white flex-1 sm:[&>*:not(:first-child)]:hidden">
-        { itemsState.items.map((item, index) => {
+        { itemsState.items.map((item) => {
           return ( 
             <tr key={item.id} className="  bg-blue-400 flex flex-col flex-no wrap justify-center sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
               <TableHeader />
