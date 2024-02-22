@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { UsersContext } from '../context-and-reducer/users/usersContext';
 
 const Signup = () => {
-    const { usersState, usersDispatch } = useContext(UsersContext);
+    const { usersState } = useContext(UsersContext);
     return (
       <section>
         <p>Signup</p>

@@ -33,7 +33,6 @@ const Users = () => {
                     deleteUser={deleteUser}
                     updateUser={updateUser}
                 />
-
             </div>
         </div>
     );

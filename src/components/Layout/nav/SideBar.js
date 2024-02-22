@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { data } from '../../../shared/data'
 import { MdHome } from 'react-icons/md';
-// import img from '/../../../../public/assets/img/5eeb1f28f9758139435731ea26afadce.jpg'
 
-const SideBar = ({show}) => {
+const SideBar = () => {
 
   return (
     <div className={`bg-white z-10 w-16 lg:w-64  h-screen text-gray `}>
@@ -32,7 +31,7 @@ const SideBar = ({show}) => {
               <span className='mr-8'> <MdHome size={30}/></span>
               <h2 className=' hidden lg:block text-'>Home</h2>
             </Link>
-        {data.map((item, index) => {
+        {data.map((item) => {
           return (
             <Link to={item.path} key={item.path}
               className="flex justify-start px-3 items-center h-[100%]

@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import { ItemsContext } from '../context-and-reducer/items/itemsContext';
 
 const ProductManagement = () => {
-  const { itemsState, addProduct, updateProduct, deleteProduct } = useContext(ItemsContext);
+  const { itemsState, deleteProduct } = useContext(ItemsContext);
   const [formData, setFormData] = useState({
     id: '',
     name: '',

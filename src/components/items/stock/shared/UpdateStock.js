@@ -4,7 +4,7 @@ import { NumberInput } from '../../../../shared/CustomInputs';
 import Total from './Total';
 import Confirm from './Confirm';
 
-const UpdateStock = ({newItems, updateItem, updateTemporaryNewStock, setNewItems, operationSign }) => {
+const UpdateStock = ({newItems, updateItem, updateTemporaryNewStock, setNewItems }) => {
 
     const handleChange = (e, item) => {
         const value = Number(e.target.value)

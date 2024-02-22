@@ -121,7 +121,6 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                         index={index}
                         updateItem={updateItem}
                     />
-
                     
                     <td className='border-grey-light border hover:bg-gray-100  pb-0'>
                         <div className="flex justify-center gap-1">

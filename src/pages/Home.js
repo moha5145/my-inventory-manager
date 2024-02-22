@@ -5,7 +5,7 @@ import { data } from '../shared/data'
 const Home = () => {
   return (
     <div className="">
-      <h1 className="text-3xl font-bold text-left mb-8 border-b-2 border-gray-100 pb-4">My Invontery Manager</h1>
+      <h1 className="text-3xl font-bold text-left mb-8 border-b-2 border-gray-100 pb-4">My Inventory Manager</h1>
       <div className="grid sm:grid-cols-2  md:grid-cols-3 w-full h-[calc(100vh-300px)] gap-6">
         {data.map((item, index) => {
           return (

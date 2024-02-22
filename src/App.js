@@ -13,7 +13,7 @@ import CategoriesPage from "./pages/CategoriesPage";
 import DashboardPage from "./pages/ DashboardPage";
 import ReportsPage from "./pages/ ReportsPage";
 import SettingsPage from "./pages/SettingsPage";
-import SigninPage from "./pages/SigninPage";
+import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import UsersPage from "./pages/UsersPage";
 
@@ -25,7 +25,7 @@ function App() {
           <Route element={<Layout />} >
             <Route path="/" element={<Home />} />
             <Route path="/users" element={<UsersPage />} />
-            <Route path="/signin" element={<SigninPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/suppliers" element={<SuppliersPage />} />
             <Route path="/items" element={<ItemsPage />} />

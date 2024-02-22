@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { UsersContext } from '../context-and-reducer/users/usersContext';
 
-const Signin = () => {
-    const { usersState, usersDispatch } = useContext(UsersContext);
+const Login = () => {
+    const { usersState } = useContext(UsersContext);
     return (
       <section>
-        <p>Signin</p>
+        <p>Login</p>
         {usersState.users.map((user, index) => {
           return (
             <div key={index}>
@@ -16,4 +16,4 @@ const Signin = () => {
       </section>
     );
 };
-export default Signin;
+export default Login;

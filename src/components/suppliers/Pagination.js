@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Paginations = ({suppliersState, setCurrentPage, currentPage, suppliersPerPage}) => {
+const Pagination = ({suppliersState, setCurrentPage, currentPage, suppliersPerPage}) => {
 
     const handleChangePage = (page) => {
         setCurrentPage(page);
@@ -20,4 +20,4 @@ const Paginations = ({suppliersState, setCurrentPage, currentPage, suppliersPerP
         </div>
     );
 };
-export default Paginations;
+export default Pagination;

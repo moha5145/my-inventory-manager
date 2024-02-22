@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import { SuppliersContext } from '../../context-and-reducer/supplier/supplierContext';
 
-import Paginations from './Paginations';
+import Pagination from './Pagination';
 import AddSupplier from './AddSuppliers';
 import SuppliersList from './SuppliersList';
 
@@ -36,7 +36,7 @@ const Suppliers = () => {
             updateSupplier={updateSupplier}
           />
 
-          <Paginations
+          <Pagination
             suppliersState={suppliersState}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}

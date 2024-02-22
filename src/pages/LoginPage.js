@@ -1,15 +1,15 @@
 import React from 'react';
 import { UsersProvider } from '../context-and-reducer/users/usersContext';
-import Signin from '../components/Signin';
+import Login from '../components/Login';
 
-const SigninPage = () => {
+const LoginPage = () => {
   return (
     <div>
       <UsersProvider>
-        <p>SigninPage</p>
-        <Signin />
+        <p>LoginPage</p>
+        <Login />
       </UsersProvider>
     </div>
   );
 };
-export default SigninPage;
+export default LoginPage;
