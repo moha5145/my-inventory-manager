@@ -73,40 +73,10 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                     />
 
                     <TableCell
-                        name="purchasePrice"
-                        type="number"
-                        placeholder="Purchase Price"
-                        value ={item.purchasePrice}
-                        editing={item.editing}
-                        index={index}
-                        updateItem={updateItem}
-                    />
-
-                    <TableCell
-                        name="purchaseDate"
-                        type="date"
-                        placeholder="date of purchase"
-                        value ={item.purchaseDate}
-                        editing={item.editing}
-                        index={index}
-                        updateItem={updateItem}
-                    />
-
-                    <TableCell
                         name="Stock"
                         type="number"
                         placeholder="Stock"
                         value ={item.stock}
-                        editing={item.editing}
-                        index={index}
-                        updateItem={updateItem}
-                    />
-
-                    <TableCell
-                        name="supplier"
-                        type="text"
-                        placeholder="Supplier"
-                        value ={item.supplier}
                         editing={item.editing}
                         index={index}
                         updateItem={updateItem}

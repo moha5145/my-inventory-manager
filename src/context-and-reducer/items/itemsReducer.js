@@ -8,10 +8,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -22,10 +22,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -36,10 +36,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -50,10 +50,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -64,10 +64,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -78,10 +78,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -92,10 +92,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         },
         {   
@@ -106,10 +106,10 @@ export const initialState = {
             category: 'phone',
             stock: 10,
             newStock: 0,
-            purchasePrice: 1200,
+            // purchasePrice: 1200,
             serialNumber: '0212343',
-            purchaseDate: "2024-02-25",
-            supplier: "tolossa",
+            // purchaseDate: "2024-02-25",
+            // supplier: "tolossa",
             editing: false 
         }
     ]

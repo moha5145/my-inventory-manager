@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SearchInput } from '../../shared/CustomInputs';
 
-const tHeaderText = ["#", "Name", "Brand", "Category", "Model", "Purchase $", "Purchase date", "Stock", "Supplier", "Serial N°", "Actions"];
+const tHeaderText = ["#", "Name", "Brand", "Category", "Model",  "Stock", "Serial N°", "Actions"];
 
 const TableHeader = () => {
   return tHeaderText.map((text, index) => {

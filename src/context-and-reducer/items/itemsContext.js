@@ -29,9 +29,9 @@ export const ItemsProvider = ({ children }) => {
         })
     }
 
-    const updateTemporaryNewStock = (element, value) => {
+    const updateTemporaryNewStock = (id, value) => {
         const updatedItems = itemsState.items.map((item) => 
-            element.id === item.id ? { ...item, newStock: value } : item
+            id === item.id ? { ...item, newStock: value } : item
         );
         itemsDispatch({
             type: 'UPDATE_TEMPORARY_STOCK',
@@ -39,13 +39,35 @@ export const ItemsProvider = ({ children }) => {
         });
     };
 
+    const resetTemporaryNewStock = () => {
+        const updatedItems = itemsState.items.map((item) => ({ ...item, newStock: 0 }));
+        itemsDispatch({
+            type: 'UPDATE_TEMPORARY_STOCK',
+            payload: updatedItems
+        });
+    }
+
+    const confirmTemporaryStock = (stockType) => {
+        const updatedItems = itemsState.items.map((item) => {
+            const stockValue = stockType === 'in' ? item.newStock : item.newStock * -1
+            return  { ...item, stock: item.stock + stockValue, newStock: 0 }
+        });
+
+        itemsDispatch({
+            type: 'UPDATE_TEMPORARY_STOCK',
+            payload: updatedItems
+        })
+    }
+
     const value = {
         itemsState,
         itemsDispatch,
         handleAddItem,
         updateItem,
         deleteItem,
-        updateTemporaryNewStock
+        updateTemporaryNewStock,
+        resetTemporaryNewStock,
+        confirmTemporaryStock
     }
 
     return (

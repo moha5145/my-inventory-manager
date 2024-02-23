@@ -1,25 +1,26 @@
 import React from 'react';
 
-const ItemsList = ({itemsState, setNewItems, newItems, updateTemporaryNewStock, operationSign}) => {
+const ItemsList = ({itemsState, updateTemporaryNewStock, stockState, stockType, addStock, updateStock}) => {
 
-  const handleClick = (item) => {
-    const newStockValue =  item.newStock + 1 ;
-    const existingItem = newItems.find(i => i.id === item.id);
-    updateTemporaryNewStock(item, newStockValue);
+  const handleClick = (item, index) => {
+    const newStockValue =  item.newStock + 1;
+    const existingItem = stockState.stocks.find(i => i.itemId === item.id);
+    updateTemporaryNewStock(item.id, newStockValue);
     if (existingItem) {
-      setNewItems(newItems.map(element => (element.id === item.id ? { ...element, newStock: newStockValue } : element)));
+      updateStock('stock', index, newStockValue)
     } else {
-      setNewItems([...newItems, { ...item, newStock: newStockValue }]);
+      const newItem = {...item, stockType};
+      addStock(newItem);
     }
   }
   
   return (
-    <div className='flex flex-col gap-2 h-[50vh] overflow-y-auto'>
-      {itemsState.items.map((item) => (
+    <div className='flex flex-col gap-2 pr-1 h-[50vh] overflow-y-auto'>
+      {itemsState.items.map((item, index) => (
         <div
           key={item.id}
-          className='flex justify-between gap-1  rounded-md cursor-pointer hover:bg-gray-50 active:bg-gray-300'
-          onClick={() => handleClick(item)}
+          className={`flex justify-between gap-1  rounded-md cursor-pointer ${stockType === 'in' ? 'hover:bg-green-50 active:bg-green-100' : 'hover:bg-red-50 active:bg-red-100'} `}
+          onClick={() => handleClick(item, index)}
         >
           <div className='flex gap-2'>
             <div className='w-16 h-16 bg-slate-200'>
@@ -35,11 +36,10 @@ const ItemsList = ({itemsState, setNewItems, newItems, updateTemporaryNewStock, 
           <div className='flex flex-col gap-1'>
             <span>{item.stock}</span>
             {item.newStock === 0 ? null : (
-              <span className={`text-sm ${operationSign === "+" ? "text-green-500" : "text-red-500"} `}>
-                {operationSign === "+" ? "+" : "-"} {item.newStock}
+              <span className={`text-sm ${stockType === "in" ? "text-green-500" : "text-red-500"} `}>
+                {stockType === "in" ? "+" : "-"} {item.newStock}
               </span>
             )}
-            
           </div>
         </div>
       ))}

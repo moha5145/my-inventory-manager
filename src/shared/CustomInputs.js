@@ -36,11 +36,12 @@ export const NumberInput = ({placeholder, onChange, value, type, name='', min=nu
 };
 
 
-export const DateInput = ({placeholder, onChange, value, type}) => {
+export const DateInput = ({placeholder, onChange, value, type, name=''}) => {
   return (
     <div className=' min-w-22 h-10'>
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
         autoFocus
         className='w-full h-full pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400'
