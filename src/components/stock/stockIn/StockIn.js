@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 
-import { ItemsContext } from '../../../../context-and-reducer/items/itemsContext';
+import { ItemsContext } from '../../../context-and-reducer/items/itemsContext';
+import { StockContext } from '../../../context-and-reducer/stock/stockContext';
+
 import Shared from '../shared/Shared';
-import { StockContext } from '../../../../context-and-reducer/stock/stockContext';
 
 const ItemIn = () => {
     const { itemsState, updateTemporaryNewStock, resetTemporaryNewStock, confirmTemporaryStock, updateItem } = useContext(ItemsContext);

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import slugify from 'slugify';
 
 import { DateInput, TextInput } from '../../shared/CustomInputs';
 
 const AddItem = ({handleAddItem}) => {
     const [item, setItem] = useState({
         name: '',
+        slug:'',
         brand: '',
         category: '',
         model: '',
@@ -23,6 +25,7 @@ const AddItem = ({handleAddItem}) => {
             handleAddItem(item)
             setItem({
                 name: '',
+                slug:'',
                 brand: '',
                 category: '',
                 model: '',
@@ -40,7 +43,7 @@ const AddItem = ({handleAddItem}) => {
         <TextInput
             placeholder='Name'
             type="text"
-            onChange={(e) => setItem({...item, name: e.target.value})}
+            onChange={(e) => setItem({...item, name: e.target.value, slug: slugify(e.target.value, {lower: true})})}
             value={item.name}
         />
 

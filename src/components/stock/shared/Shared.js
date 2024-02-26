@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SelectInput, TextInput } from '../../../../shared/CustomInputs';
+import { SelectInput, TextInput } from '../../../shared/CustomInputs';
 import ItemsList from './ItemsList';
 import UpdateStock from './UpdateStock';
 
@@ -22,7 +22,7 @@ const Shared = ({
 }) => {
   return (
     <div >
-        <h2>{title}</h2>
+        <h2 className={`border-b-2 pb-2 mb-4 ${stockType === 'in' ? 'border-green-400' : 'border-red-500'}`} >{title}</h2>
         <div className="md:flex gap-4" >
             <div className="flex-3 ">
                 <h3 className='border-b border-gray-200 pb-4 '> Select Item </h3>
@@ -43,7 +43,7 @@ const Shared = ({
                 />
             </div>
             <div className="flex-1 h-44">
-                <h3 className='border-b border-gray-200 pb-4 '> Stock In </h3>
+                <h3 className='border-b border-gray-200 pb-4 '> {title} </h3>
                 {/* <div className='py-2'>
                     <DateInput
                         type='date'

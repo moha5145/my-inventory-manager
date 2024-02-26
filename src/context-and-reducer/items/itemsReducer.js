@@ -2,7 +2,8 @@ export const initialState = {
     items: [
         {   
             id: 1,
-            name: 'chala',
+            name: 'chaltu',
+            slug: 'chaltu',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -17,6 +18,7 @@ export const initialState = {
         {   
             id: 2,
             name: 'kebede',
+            slug: 'kebede',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -30,7 +32,8 @@ export const initialState = {
         },
         {   
             id: 3,
-            name: 'chala',
+            name: 'gebre',
+            slug: 'gebre',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -44,7 +47,8 @@ export const initialState = {
         },
         {   
             id: 4,
-            name: 'kebede',
+            name: 'gidi',
+            slug: 'gidi',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -58,7 +62,8 @@ export const initialState = {
         },
         {   
             id: 5,
-            name: 'chala',
+            name: 'zeberga',
+            slug: 'zeberga',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -72,7 +77,8 @@ export const initialState = {
         },
         {   
             id: 6,
-            name: 'kebede',
+            name: 'zenebu',
+            slug: 'zenebu',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -86,7 +92,8 @@ export const initialState = {
         },
         {   
             id: 7,
-            name: 'chala',
+            name: 'zeberga',
+            slug: 'zeberga',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',
@@ -100,7 +107,8 @@ export const initialState = {
         },
         {   
             id: 8,
-            name: 'kebede',
+            name: 'milkessa',
+            slug: 'milkessa',
             brand: "xiaomi",
             model: 'mi',
             category: 'phone',

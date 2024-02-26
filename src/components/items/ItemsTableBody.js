@@ -1,11 +1,14 @@
 import React from 'react';
 
 import { TextInput } from '../../shared/CustomInputs';
+import { Link } from 'react-router-dom';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
-        <td className='min-w-[6rem] border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
-            { editing ? (
+        <td className='w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+            
+            <div className=''>
+                { editing ? (
                 <TextInput
                     type={type}
                     placeholder={placeholder}
@@ -13,22 +16,22 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
                     value={value}
                 />
                 ) :
-                <span>
-                    
+                <span className='' >
                     { value }
                 </span>
             }
+            </div>
         </td>
     )
 }
 
 const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
   return (
-    <tbody className='flex-1 sm:flex-none'>
+    <tbody className='w-full flex flex-col sm:flex-none'>
         { itemsState.items.map((item, index) => {
             return (       
                 <tr key={index} className='flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 justify-center' >
-                    <td className=' border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+                    <td className=' border-grey-light border hover:bg-gray-50 h-12 pl-1 leading-10'>
                         {index+1}
                     </td>
 
@@ -94,6 +97,9 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                     
                     <td className='border-grey-light border hover:bg-gray-100  pb-0'>
                         <div className="flex justify-center gap-1">
+                            <Link to={`/item-details/${item.slug} `} state={item}  className="bg-green-400 hover:opacity-60 text-white font-bold p-3 px-4 rounded-md">
+                                Show
+                            </Link>
                             { !item.editing ?
                                 <button 
                                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 px-4 rounded-md"

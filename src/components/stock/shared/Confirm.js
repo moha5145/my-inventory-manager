@@ -12,13 +12,13 @@ const Confirm = ({ cancelStocks, stockType, resetTemporaryNewStock, confirmTempo
   }
   return (
     <div className='flex justify-evenly gap-2'>
+        <button onClick={cancelHandler} className="flex-1 px-4 py-2 bg-red-500 text-white rounded-md">
+            Clear
+        </button>
         <button onClick={confirmHandler} className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-md">
             Confirm
         </button>
 
-        <button onClick={cancelHandler} className="flex-1 px-4 py-2 bg-red-500 text-white rounded-md">
-            Clear
-        </button>
     </div>
   );
 };

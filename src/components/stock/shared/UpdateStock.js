@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DateInput, NumberInput } from '../../../../shared/CustomInputs';
+import { DateInput, NumberInput } from '../../../shared/CustomInputs';
 import Total from './Total';
 import Confirm from './Confirm';
 
@@ -15,7 +15,6 @@ const UpdateStock = ({ updateItem, updateTemporaryNewStock, resetTemporaryNewSto
         }
         updateStock([e.target.name], index, value);
     }
-
 
     const handleClose = (item) => {
         updateTemporaryNewStock(item.itemId, 0);
