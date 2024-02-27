@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { StockContext } from '../../../context-and-reducer/stock/stockContext';
 
 const ItemDetails = () => {
+  const { addStock  } = useContext(StockContext);
     const location = useLocation();
     const { state } = location;
     const navigate = useNavigate();
@@ -31,8 +33,8 @@ const ItemDetails = () => {
         <p>Current Status</p>
         <h3 className='text-3xl'>{state.stock}</h3>
         <div className='group'>
-          <button className='border px-6'>In</button>
-          <button className='border px-6'>Out</button>
+          <button className='border px-6' onClick={() => {addStock(state); navigate('/stock-in')}}>In</button>
+          <button className='border px-6' onClick={() => {addStock(state); navigate('/stock-out')}}>Out</button>
           {/* <button>In</button> */}
         </div>
       </div>

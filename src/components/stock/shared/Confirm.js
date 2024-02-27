@@ -1,4 +1,6 @@
 import React from 'react';
+import OutlineBtn from '../../customButtons/OutlineBtn';
+import ColoredBtn from '../../customButtons/ColoredBtn';
 
 const Confirm = ({ cancelStocks, stockType, resetTemporaryNewStock, confirmTemporaryStock, confirmStocks}) => {
   const cancelHandler = () => {
@@ -12,13 +14,8 @@ const Confirm = ({ cancelStocks, stockType, resetTemporaryNewStock, confirmTempo
   }
   return (
     <div className='flex justify-evenly gap-2'>
-        <button onClick={cancelHandler} className="flex-1 px-4 py-2 bg-red-500 text-white rounded-md">
-            Clear
-        </button>
-        <button onClick={confirmHandler} className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-md">
-            Confirm
-        </button>
-
+        <OutlineBtn text='Cancel' onClick={cancelHandler} />
+        <ColoredBtn text='Confirm' onClick={confirmHandler} textColor='text-white' />
     </div>
   );
 };

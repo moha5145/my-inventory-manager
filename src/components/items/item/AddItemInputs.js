@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import slugify from 'slugify';
 
-import { DateInput, TextInput } from '../../shared/CustomInputs';
+import { DateInput, TextInput } from '../../../shared/CustomInputs';
+import { useNavigate } from 'react-router-dom';
+import OutlineBtn from '../../customButtons/OutlineBtn';
+import ColoredBtn from '../../customButtons/ColoredBtn';
 
-const AddItem = ({handleAddItem}) => {
+const AddItem = ({handleAddItem, flexType = 'col'}) => {
+
+    const navigate = useNavigate();
+
     const [item, setItem] = useState({
         name: '',
         slug:'',
@@ -39,7 +45,7 @@ const AddItem = ({handleAddItem}) => {
         }}
     >
       <p className='text-2xl mb-3'>AddItem</p>
-      <div className='flex flex-col md:flex-row gap-2 sm:gap-1 border-gray-200 '>
+      <div className={`flex flex-${flexType} gap-2 sm:gap-1 border-gray-200 `}>
         <TextInput
             placeholder='Name'
             type="text"
@@ -103,11 +109,22 @@ const AddItem = ({handleAddItem}) => {
             value={item.serialNumber}
         />
 
-        <button
-            className='bg-orange-500 hover:opacity-50 text-white font-bold px-4 py-2 mt-2 md:m-0 rounded-lg'
-        >
-            Save
-        </button>
+        <div className='flex gap-2'>
+            <div className='md:hidden w-full'>
+
+                <OutlineBtn
+                    text='Return'
+                    onClick={() => navigate(-1)}
+                    bgColor='bg-white-500'
+                    textColor='text-gray-500'
+                    w='full'
+                />
+            </div>
+
+            <ColoredBtn
+                text="Save"
+            />
+        </div>
       </div>
     </form>
   );

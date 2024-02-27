@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import SuppliersPage from "./pages/SuppliersPage";
 import ItemsPage from "./pages/ItemsPage";
+import ItemCreatePage from "./pages/ItemCreatePage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import StockInPage from "./pages/StockInPage";
 import StockOutPage from "./pages/StockOutPage";
@@ -29,6 +30,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/suppliers" element={<SuppliersPage />} />
+            <Route path="/items/create" element={<ItemCreatePage />} />
             <Route path="/items" element={<ItemsPage />} />
             <Route path="/item-details/:slug" element={<ItemDetailsPage />} />
             <Route path="/stock-in" element={<StockInPage />} />

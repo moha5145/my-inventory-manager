@@ -59,11 +59,13 @@ export const SearchInput = ({placeholder, onChange, value, type}) => {
         type={type}
         placeholder={placeholder}
         autoFocus
-        className='w-full h-full pl-1 mb-1 md:m-0  rounded-lg outline-orange-400'
+        className='w-full h-full p-1 my-1 md:m-0  rounded-lg outline-orange-400'
         onChange={onChange}
         value={value}
       />
-      <MdSearch />
+      <span className='px-2 bg-blue-400 h-full flex items-center justify-center text-white rounded-r-md'> 
+        <MdSearch />
+      </span>
     </div>
   );
 };

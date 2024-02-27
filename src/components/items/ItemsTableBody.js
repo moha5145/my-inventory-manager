@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { TextInput } from '../../shared/CustomInputs';
-import { Link } from 'react-router-dom';
+import ColoredBtn from '../customButtons/ColoredBtn';
+import ColoredLink from '../customLinks/ColoredLink';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
-        <td className='w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+        <td className='w-full md:w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
             
             <div className=''>
                 { editing ? (
@@ -30,8 +31,8 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
     <tbody className='w-full flex flex-col sm:flex-none'>
         { itemsState.items.map((item, index) => {
             return (       
-                <tr key={index} className='flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 justify-center' >
-                    <td className=' border-grey-light border hover:bg-gray-50 h-12 pl-1 leading-10'>
+                <tr key={index} className='h-full flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 justify-center' >
+                    <td className='w-full md:w-2 border-grey-light border hover:bg-gray-50 h-12 pl-1 leading-10'>
                         {index+1}
                     </td>
 
@@ -95,35 +96,36 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                         updateItem={updateItem}
                     />
                     
-                    <td className='border-grey-light border hover:bg-gray-100  pb-0'>
-                        <div className="flex justify-center gap-1">
-                            <Link to={`/item-details/${item.slug} `} state={item}  className="bg-green-400 hover:opacity-60 text-white font-bold p-3 px-4 rounded-md">
-                                Show
-                            </Link>
+                    <td className='w-full md:w-52 h-12 border-grey-light border hover:bg-gray-100 pb-0'>
+                        <div className="flex justify-center gap-1 ">
+
+                            <ColoredLink
+                                to={`/item-details/${item.slug} `}
+                                state={item}
+                                text='Show'
+                                bgColor='bg-yellow-400'
+                                textColor='text-white'
+                            />
                             { !item.editing ?
-                                <button 
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 px-4 rounded-md"
-                                    onClick={() => {
-                                        updateItem(!item.editing, index, "editing")
-                                    }} 
-                                    >
-                                    Edit
-                                </button>
-                                :
-                            
-                                <button 
-                                    className="bg-orange-500 hover:opacity-60 text-white font-bold p-3 px-4 rounded-md"
-                                    onClick={() => updateItem(!item.editing, index, "editing")} 
-                                >
-                                    save
-                                </button>
+                                <ColoredBtn
+                                    onClick={() => updateItem(!item.editing, index, "editing")}
+                                    text='Edit'
+                                    bgColor='bg-blue-400'
+                                />
+                                :      
+                                <ColoredBtn
+                                    onClick={() => updateItem(!item.editing, index, "editing")}
+                                    text='Save'
+                                    bgColor='bg-orange-400'
+                                />
                             }
 
-                            <button
+                            <ColoredBtn
+                                text='Delete'
+                                px='px-2'
+                                bgColor='bg-red-400'
                                 onClick={() => deleteItem(index)}
-                                className="bg-red-400 hover:opacity-60 text-white font-bold px-4 rounded-md">
-                                Delete
-                            </button>
+                            />
                         </div>
                     </td>
                 </tr>
