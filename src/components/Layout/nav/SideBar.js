@@ -42,7 +42,6 @@ const SideBar = () => {
             </Link>
           )
         })}
-
       </nav>
     </div>
   );

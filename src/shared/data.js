@@ -1,9 +1,10 @@
 import { MdPerson, MdPerson2, MdOutlineDevicesOther, MdCategory, MdDashboard, MdDocumentScanner, MdOutlineSettings } from "react-icons/md";
-import { TbDeviceDesktopDown, TbDeviceDesktopShare } from "react-icons/tb";
+import { TbArrowBarUp, TbArrowBarToDown } from "react-icons/tb";
+
 export const data = [
     { name: "Items", path: "/items", icon: MdOutlineDevicesOther},
-    { name: "Stock In", path: "/stock-in", icon: TbDeviceDesktopDown},
-    { name: "Stock Out", path: "/stock-out", icon: TbDeviceDesktopShare},
+    { name: "Stock In", path: "/stock-in", icon: TbArrowBarToDown},
+    { name: "Stock Out", path: "/stock-out", icon: TbArrowBarUp},
     { name: "Categories", path: "/categories", icon: MdCategory}, 
     { name: "Users", path: '/users', icon: MdPerson2 },
     { name: "Suppliers", path: "/suppliers", icon: MdPerson },

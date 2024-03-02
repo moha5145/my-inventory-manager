@@ -23,7 +23,7 @@ export const UsersProvider = ({children}) => {
     }
 
     const deleteUser = (id) => {
-        const updatedUsers = usersState.users.filter((user) => user.id !== id)
+        const updatedUsers = usersState.users.filter((user) => user._id !== id)
         usersDispatch({
             type: 'DELETE_USERS',
             payload: updatedUsers

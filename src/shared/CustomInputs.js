@@ -4,7 +4,7 @@ import { MdSearch } from "react-icons/md";
 
 export const TextInput = ({placeholder, onChange, value, type, name=''}) => {
   return (
-    <div className=' min-w-20 h-10'>
+    <div className=' w-full h-10'>
       <input
         type={type}
         placeholder={placeholder}

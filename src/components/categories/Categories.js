@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
   const [categories, setCategories] = useState([
-    { id: 1, name: 'Smartphones' },
-    { id: 2, name: 'Accessories' },
-    { id: 3, name: 'Tablets' },
+    { _id: 1, name: 'Smartphones' },
+    { _id: 2, name: 'Accessories' },
+    { _id: 3, name: 'Tablets' },
     // Ajoutez d'autres catégories si nécessaire
   ]);
 
@@ -19,7 +19,7 @@ const Categories = () => {
     e.preventDefault();
     if (newCategory.trim() !== '') {
       const newCategoryObj = {
-        id: categories.length + 1,
+        _id: categories.length + 1,
         name: newCategory.trim()
       };
       setCategories([...categories, newCategoryObj]);
@@ -38,7 +38,7 @@ const Categories = () => {
       </form>
       <ul className="mt-4">
         {categories.map(category => (
-          <li key={category.id} className="flex items-center justify-between border-b border-gray-200 py-2">
+          <li key={category._id} className="flex items-center justify-between border-b border-gray-200 py-2">
             <Link to={`/categories/${category.id}`} className="text-blue-500 hover:underline">{category.name}</Link>
             <button className="px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">Delete</button>
           </li>

@@ -4,8 +4,8 @@ const ItemsList = ({itemsState, updateTemporaryNewStock, stockState, stockType, 
 
   const handleClick = (item, index) => {
     const newStockValue =  item.newStock + 1;
-    const existingItem = stockState.stocks.find(i => i.itemId === item.id);
-    updateTemporaryNewStock(item.id, newStockValue);
+    const existingItem = stockState.stocks.find(i => i.itemId === item._id);
+    updateTemporaryNewStock(item._id, newStockValue);
     if (existingItem) {
       updateStock('stock', index, newStockValue)
     } else {
@@ -18,7 +18,7 @@ const ItemsList = ({itemsState, updateTemporaryNewStock, stockState, stockType, 
     <div className='flex flex-col gap-2 pr-1 h-[50vh] overflow-y-auto'>
       {itemsState.items.map((item, index) => (
         <div
-          key={item.id}
+          key={item._id}
           className={`flex justify-between gap-1  rounded-md cursor-pointer ${stockType === 'in' ? 'hover:bg-green-50 active:bg-green-100' : 'hover:bg-red-50 active:bg-red-100'} `}
           onClick={() => handleClick(item, index)}
         >

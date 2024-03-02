@@ -31,7 +31,7 @@ const UpdateStock = ({ updateItem, updateTemporaryNewStock, resetTemporaryNewSto
                 {stockState.stocks.map((item, index) => {
                     return (
                         <div
-                            key={item.id}
+                            key={item._id}
                             className={`flex justify-between gap-4 mb-1 rounded-md ${item.stockType === 'in' ? 'bg-green-100' : 'bg-red-100'} `}
                         >
                             <div className='flex gap-2'>
@@ -51,28 +51,55 @@ const UpdateStock = ({ updateItem, updateTemporaryNewStock, resetTemporaryNewSto
                                 </div>
                             </div>
 
-                            <div className='flex gap-2 justify-center items-center'>
-                                <div className='max-w-28'>
-                                    <label className='text-xs'>Purchase Price</label>
-                                    <NumberInput
-                                        type='number'
-                                        name='purchasePrice'
-                                        placeholder='Purchase price'
-                                        value={item.purchasePrice}
-                                        min={0}
-                                        onChange={(e) => handleChange(e, item, index)}
-                                    />
-                                </div>
+                            <div className='flex gap-2 justify-center items-center'>                              
 
-                                <div className='max-w-28'>
-                                    <label className='text-xs'>Purchase Date</label>
-                                    <DateInput
-                                        type='date'
-                                        name='purchaseDate'
-                                        value={item.purchaseDate || date}
-                                        onChange={(e) => handleChange(e, item, index)}
-                                    />
-                                </div>
+                                {item.stockType === 'in' ? 
+                                    <div className='max-w-28'>
+                                        <label className='text-xs'>Purchase Price</label>
+                                        <NumberInput
+                                            type='number'
+                                            name='purchasePrice'
+                                            placeholder='Purchase price'
+                                            value={item.purchasePrice}
+                                            min={0}
+                                            onChange={(e) => handleChange(e, item, index)}
+                                        />
+                                    </div>
+                                    :
+                                    <div className='max-w-28'>
+                                        <label className='text-xs'>Sale Price</label>
+                                        <NumberInput
+                                            type='number'
+                                            name='salePrice'
+                                            placeholder='Sale price'
+                                            value={item.salePrice}
+                                            min={0}
+                                            onChange={(e) => handleChange(e, item, index)}
+                                        />
+                                    </div> 
+                                }
+
+                                {item.stockType === 'in' ?
+                                    <div className='max-w-28'>
+                                        <label className='text-xs'>Purchase Date</label>
+                                        <DateInput
+                                            type='date'
+                                            name='purchaseDate'
+                                            value={item.purchaseDate || date}
+                                            onChange={(e) => handleChange(e, item, index)}
+                                        />
+                                    </div>
+                                    :
+                                    <div className='max-w-28'>
+                                        <label className='text-xs'>Sale Date</label>
+                                        <DateInput
+                                            type='date'
+                                            name='saleDate'
+                                            value={item.saleDate || date}
+                                            onChange={(e) => handleChange(e, item, index)}
+                                        />
+                                    </div>
+                                }
 
                                 <div className='max-w-28'>
                                     <label className='text-xs'>Quantity</label>

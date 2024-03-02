@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import { initialState, stockReducer } from './stockReducer';
 import { uid } from 'uid';
+import axios from "axios";
 
 
 export const StockContext = createContext();
@@ -8,11 +9,11 @@ export const StockProvider = ({children}) => {
     const [stockState, stockDispatch] = useReducer(stockReducer, initialState);
     
     const addStock = (item) => {
-        const { category, id, name, stockType } = item
+        const { category, _id, name, stockType } = item
 
         const data = {
             id: uid(),
-            itemId: id,
+            itemId: _id,
             name,
             stock: 1,
             category,
@@ -34,7 +35,7 @@ export const StockProvider = ({children}) => {
     }
 
     const deleteStock = (item) => {
-        const updatedStocks = stockState.stocks.filter((stock) => stock.id !== item.id);
+        const updatedStocks = stockState.stocks.filter((stock) => stock._id !== item._id);
         stockDispatch({ type: 'UPDATE_STOCKS', payload: updatedStocks })
     };
 
@@ -42,7 +43,7 @@ export const StockProvider = ({children}) => {
         stockDispatch({ type: 'DELETE_STOCKS', payload: [] })
     }
 
-    const confirmStocks = () => {  
+    const confirmStocks = async () => {  
         const stockValToNegativePositive = stockState.stocks.map((stock) => {
             const stockValue = stock.stockType === 'in' ? stock.stock : stock.stock * -1
             return {
@@ -50,11 +51,25 @@ export const StockProvider = ({children}) => {
                 stock: stockValue
             }
         })
+
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/stock/create`, {stockItems: stockValToNegativePositive});
+        console.log('response.data', response.data)
         stockDispatch({ type: 'UPDATE_STOCKS', payload: stockValToNegativePositive })
         // fetch stock data to database then reset the state
 
-        console.log('stockValToNegativePositive', stockValToNegativePositive)
         stockDispatch({ type: 'UPDATE_STOCKS', payload: [] })
+    }
+
+    const getStocksByItemId = async (itemId) => {
+        try {
+            stockDispatch({ type: 'LOADING', payload: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/stocks/${itemId}`);
+            stockDispatch({ type: 'GET_STOCKS_BY_ITEM_ID', payload: response.data })
+        } catch (error) {
+            console.log('error', error)
+        } finally {
+            stockDispatch({ type: 'LOADING', payload: false });
+        }
     }
     
     const value = {
@@ -64,7 +79,8 @@ export const StockProvider = ({children}) => {
         updateStock,
         deleteStock,
         cancelStocks,
-        confirmStocks
+        confirmStocks,
+        getStocksByItemId
     }
     return (
         <StockContext.Provider value={value}>

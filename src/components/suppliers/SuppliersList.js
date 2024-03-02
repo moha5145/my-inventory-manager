@@ -5,7 +5,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
   return (
     <ul className='grid grid-cols-1 md:grid-cols-2 gap-4 '>
         {currentSuppliers.map((supplier, index) => (
-            <li key={supplier.id} className="border-b border-gray-200 py-4 ">
+            <li key={supplier._id} className="border-b border-gray-200 py-4 ">
                 {supplier.editing ? (
                     <div className='mb-1'>
                         <TextInput
@@ -76,7 +76,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                     </button>                
 
                     <button
-                        onClick={() => deleteSupplier(supplier.id)}
+                        onClick={() => deleteSupplier(supplier._id)}
                         className="w-full mt-2 px-4 py-2 bg-red-400 text-white rounded-md hover:bg-red-300"
                     >
                         Delete

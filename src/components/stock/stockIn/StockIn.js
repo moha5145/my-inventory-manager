@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { ItemsContext } from '../../../context-and-reducer/items/itemsContext';
 import { StockContext } from '../../../context-and-reducer/stock/stockContext';
@@ -6,9 +6,13 @@ import { StockContext } from '../../../context-and-reducer/stock/stockContext';
 import Shared from '../shared/Shared';
 
 const ItemIn = () => {
-    const { itemsState, updateTemporaryNewStock, resetTemporaryNewStock, confirmTemporaryStock, updateItem } = useContext(ItemsContext);
+    const { itemsState,getItems, updateTemporaryNewStock, resetTemporaryNewStock, confirmTemporaryStock, updateItem } = useContext(ItemsContext);
     const { stockState, addStock, updateStock, deleteStock, cancelStocks, confirmStocks } = useContext(StockContext);
 
+    useEffect(() => {
+        getItems();
+    }, []);
+    
     return (
     <>
         <Shared

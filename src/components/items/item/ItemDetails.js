@@ -1,14 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import { StockContext } from '../../../context-and-reducer/stock/stockContext';
 
+import StocksByItemId from './StocksByItemId';
+
 const ItemDetails = () => {
-  const { addStock  } = useContext(StockContext);
+  const { stockState, addStock, getStocksByItemId  } = useContext(StockContext);
     const location = useLocation();
     const { state } = location;
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getStocksByItemId(state._id)
+    }, [])
+
   return (
-    <div className='flex gap-4 justify-between'>
+    <div className='h-[calc(100vh-310px)] flex gap-4 justify-between'>
 
       <div className='w-2/3 flex flex-col gap-4'>
         <p className='text-2xl pb-2'>Item details</p>
@@ -29,15 +37,11 @@ const ItemDetails = () => {
         </button>
       </div>
 
-      <div className='w-1/3 border border-gray-300 rounded-md p-2 shadow-md'>
-        <p>Current Status</p>
-        <h3 className='text-3xl'>{state.stock}</h3>
-        <div className='group'>
-          <button className='border px-6' onClick={() => {addStock(state); navigate('/stock-in')}}>In</button>
-          <button className='border px-6' onClick={() => {addStock(state); navigate('/stock-out')}}>Out</button>
-          {/* <button>In</button> */}
-        </div>
-      </div>
+      <StocksByItemId
+        stockState={stockState}
+        state={state}
+        addStock={addStock}
+      />
     </div>
   );
 };

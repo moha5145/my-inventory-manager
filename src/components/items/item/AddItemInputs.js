@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import slugify from 'slugify';
 
-import { DateInput, TextInput } from '../../../shared/CustomInputs';
+import { SelectInput, TextInput } from '../../../shared/CustomInputs';
 import { useNavigate } from 'react-router-dom';
 import OutlineBtn from '../../customButtons/OutlineBtn';
 import ColoredBtn from '../../customButtons/ColoredBtn';
 
-const AddItem = ({handleAddItem, flexType = 'col'}) => {
+const AddItem = ({handleAddItem, flexType = 'col', categoriesState}) => {
 
     const navigate = useNavigate();
 
@@ -16,10 +16,8 @@ const AddItem = ({handleAddItem, flexType = 'col'}) => {
         brand: '',
         category: '',
         model: '',
-        purchasePrice: '',
-        purchaseDate: '',
-        quantity: '',
-        supplier: '',
+        stock: 0,
+        newStock: 0,
         serialNumber: '',
         editing: false, 
     });
@@ -35,17 +33,15 @@ const AddItem = ({handleAddItem, flexType = 'col'}) => {
                 brand: '',
                 category: '',
                 model: '',
-                purchasePrice: '',
-                purchaseDate: '',
-                quantity: '',
-                supplier: '',
+                stock: 0,
+                newStock: 0,
                 serialNumber: '',
                 editing: false 
             })
         }}
     >
       <p className='text-2xl mb-3'>AddItem</p>
-      <div className={`flex flex-${flexType} gap-2 sm:gap-1 border-gray-200 `}>
+      <div className={`flex flex-${flexType} w-full gap-2 sm:gap-1 border-gray-200 `}>
         <TextInput
             placeholder='Name'
             type="text"
@@ -60,47 +56,46 @@ const AddItem = ({handleAddItem, flexType = 'col'}) => {
             value={item.brand}
         />
 
-        <TextInput
+        {/* <TextInput
             placeholder='Category'
             type="text"
             onChange={(e) => setItem({...item, category: e.target.value})}
             value={item.category}
+        /> */}
+        <SelectInput
+            name='categories'
+            onChange={(e) => setItem({...item, category: e.target.value})}
+            value={item.category}
+            options={categoriesState.categories}
         />
+
+        <select
+            name="categories"
+            id=""
+            value={item.category || 'category'}
+            onChange={(e) => setItem({...item, category: e.target.value})}
+            className='w-full border-2 bg-white outline-orange-400 rounded-md p-2'
+        >
+            <option value="">Select a category</option>
+
+                <TextInput
+                    placeholder='Category'
+                    type="text"
+                    onChange={(e) => setItem({...item, category: e.target.value})}
+                    value={item.category}
+                />
+            {categoriesState.categories.map((category ) => {
+                return <option value={category.value}>{category.label}</option>
+            })}
+            <button >Add Category</button>
+        </select>
 
         <TextInput
             placeholder='Model'
             type="text"
             onChange={(e) => setItem({...item, model: e.target.value})}
             value={item.model}
-        />
-
-        <TextInput
-            placeholder='Purchase $'
-            type="number"
-            onChange={(e) => setItem({...item, purchasePrice: e.target.value})}
-            value={item.purchasePrice}
-        />
-
-        <DateInput
-            placeholder='Purchase date'
-            type="date"
-            onChange={(e) => setItem({...item, purchaseDate: e.target.value})}
-            value={item.purchaseDate}
-        />
-
-        <TextInput
-            placeholder='Quantity'
-            type="number"
-            onChange={(e) => setItem({...item, quantity: e.target.value})}
-            value={item.quantity}
-        />
-
-        <TextInput
-            placeholder='Supplier'
-            type="text"
-            onChange={(e) => setItem({...item, supplier: e.target.value})}
-            value={item.supplier }
-        />
+        />    
 
         <TextInput
             placeholder='Serial N°'

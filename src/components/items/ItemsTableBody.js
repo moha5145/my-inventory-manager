@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { TextInput } from '../../shared/CustomInputs';
 import ColoredBtn from '../customButtons/ColoredBtn';
@@ -6,7 +7,7 @@ import ColoredLink from '../customLinks/ColoredLink';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
-        <td className='w-full md:w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+        <td className='w-full sm:w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
             
             <div className=''>
                 { editing ? (
@@ -26,13 +27,19 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
     )
 }
 
-const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
+const ItemsTableBody = ({itemsState, updateItem, deleteItem, saveUpdate}) => {
+
+    const handleSave = (item, index) => {
+        // updateItem(index, 'editing', false)
+        saveUpdate(item, index)
+        updateItem(!item.editing, index, "editing")
+    }
   return (
-    <tbody className='w-full flex flex-col sm:flex-none'>
-        { itemsState.items.map((item, index) => {
+    <tbody className='w-full flex flex-col sm:flex-none sm:inline-table '>
+        { itemsState?.items?.map((item, index) => {
             return (       
-                <tr key={index} className='h-full flex flex-col flex-no wrap sm:table-row mb-5 sm:mb-0 justify-center' >
-                    <td className='w-full md:w-2 border-grey-light border hover:bg-gray-50 h-12 pl-1 leading-10'>
+                <tr key={item._id} className='h-full flex flex-col flex-no-wrap sm:flex-none sm:table-row mb-5 sm:mb-0 justify-center' >
+                    <td className='w-full sm:w-2 border-grey-light border hover:bg-gray-50 h-12 pl-1 leading-10'>
                         {index+1}
                     </td>
 
@@ -77,16 +84,6 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                     />
 
                     <TableCell
-                        name="Stock"
-                        type="number"
-                        placeholder="Stock"
-                        value ={item.stock}
-                        editing={item.editing}
-                        index={index}
-                        updateItem={updateItem}
-                    />
-
-                    <TableCell
                         name="serialNumber"
                         type="number"
                         placeholder="Serial Number"
@@ -96,7 +93,19 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                         updateItem={updateItem}
                     />
                     
-                    <td className='w-full md:w-52 h-12 border-grey-light border hover:bg-gray-100 pb-0'>
+
+                    <td className=' w-full sm:w-52 border-grey-light border hover:bg-gray-50 h-12 pl-1 leading-10'>
+                        <div className='flex flex-col h-12'>
+                            <span className='h-full text-xs pb-0'>
+                                {item.stock}
+                            </span>
+                            <span className='h-full flex py-1 gap-1'>
+                                <Link to='/stock-in' className='flex-1 py-0 px-1 rounded-sm text-xs bg-green-400 text-white hover:opacity-60'>in</Link>
+                                <Link to='/stock-out' className='flex-1 py-0 px-1 rounded-sm text-xs bg-red-400 text-white hover:opacity-60'>out</Link>
+                            </span>
+                        </div>
+                    </td>
+                    <td className='w-full sm:w-52 h-12 border-grey-light border hover:bg-gray-100 pb-0'>
                         <div className="flex justify-center gap-1 ">
 
                             <ColoredLink
@@ -114,7 +123,10 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                                 />
                                 :      
                                 <ColoredBtn
-                                    onClick={() => updateItem(!item.editing, index, "editing")}
+                                    onClick={() => {
+                                        handleSave(item, index)
+                                        // updateItem(!item.editing, index, "editing")
+                                    }}
                                     text='Save'
                                     bgColor='bg-orange-400'
                                 />
@@ -124,7 +136,7 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem}) => {
                                 text='Delete'
                                 px='px-2'
                                 bgColor='bg-red-400'
-                                onClick={() => deleteItem(index)}
+                                onClick={() => deleteItem(item)}
                             />
                         </div>
                     </td>

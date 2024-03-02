@@ -21,7 +21,7 @@ const Shared = ({
     confirmTemporaryStock
 }) => {
   return (
-    <div >
+    <>
         <h2 className={`border-b-2 pb-2 mb-4 ${stockType === 'in' ? 'border-green-400' : 'border-red-500'}`} >{title}</h2>
         <div className="md:flex gap-4" >
             <div className="flex-3 ">
@@ -31,17 +31,20 @@ const Shared = ({
                     <TextInput />
                 </div>
 
-                <ItemsList
-                    itemsState={itemsState}
-                    updateItem={updateItem}
-                    updateTemporaryNewStock={updateTemporaryNewStock}
-                    operationSign={operationSign}
-                    stockType={stockType}
-                    stockState={stockState} 
-                    addStock={addStock}
-                    updateStock={updateStock}
-                />
+                {itemsState.isLoading ? <p>Loading...</p> :
+                    <ItemsList
+                        itemsState={itemsState}
+                        updateItem={updateItem}
+                        updateTemporaryNewStock={updateTemporaryNewStock}
+                        operationSign={operationSign}
+                        stockType={stockType}
+                        stockState={stockState} 
+                        addStock={addStock}
+                        updateStock={updateStock}
+                    />
+                }
             </div>
+            
             <div className="flex-1 h-44">
                 <h3 className='border-b border-gray-200 pb-4 '> {title} </h3>
                 {/* <div className='py-2'>
@@ -65,7 +68,7 @@ const Shared = ({
                 />
             </div>
         </div>
-    </div>
+    </>
   );
 };
 export default Shared;

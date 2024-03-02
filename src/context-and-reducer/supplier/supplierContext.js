@@ -16,7 +16,7 @@ export const SuppliersProvider = ({children}) => {
     }
     
     const deleteSupplier = (id) => {
-        const updatedSuppliers = suppliersState.suppliers.filter((supplier) => supplier.id !== id);
+        const updatedSuppliers = suppliersState.suppliers.filter((supplier) => supplier._id !== id);
         suppliersDispatch({ type: 'DELETE_SUPPLIER', payload: updatedSuppliers });
     }
 

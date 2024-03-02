@@ -28,7 +28,7 @@ const TableActions = ({item, deleteUser, updateUser, index}) => {
 
             <button
                 onClick={() => {
-                    deleteUser(item.id)
+                    deleteUser(item._id)
                 }}
                 className="bg-red-400 hover:opacity-60 text-white font-bold px-4 rounded-md">
                 Delete
