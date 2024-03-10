@@ -11,6 +11,7 @@ const ItemIn = () => {
 
     useEffect(() => {
         getItems();
+        // eslint-disable-next-line 
     }, []);
     
     return (

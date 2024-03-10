@@ -12,6 +12,7 @@ const StockOut = () => {
 
   useEffect(() => {
         getItems();
+        // eslint-disable-next-line 
     }, []);
 
   return (

@@ -13,6 +13,7 @@ const ItemDetails = () => {
 
     useEffect(() => {
         getStocksByItemId(state._id)
+        // eslint-disable-next-line 
     }, [])
 
   return (
