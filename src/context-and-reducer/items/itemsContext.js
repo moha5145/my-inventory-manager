@@ -88,6 +88,13 @@ export const ItemsProvider = ({ children }) => {
         })
     }
 
+    const toggleModal = (value) => {
+        itemsDispatch({
+            type: 'TOGGLE_MODAL',
+            payload: value
+        })
+    }
+
     const value = {
         itemsState,
         itemsDispatch,
@@ -98,7 +105,8 @@ export const ItemsProvider = ({ children }) => {
         deleteItem,
         updateTemporaryNewStock,
         resetTemporaryNewStock,
-        confirmTemporaryStock
+        confirmTemporaryStock,
+        toggleModal
     }
 
     return (

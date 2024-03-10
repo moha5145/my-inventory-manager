@@ -1,7 +1,8 @@
 export const initialState = {
     items: [],
     isLoading: false,
-    error: null
+    error: null, 
+    showModal: false
 }
 
 export const itemsReducer = (state, action) => {
@@ -36,6 +37,11 @@ export const itemsReducer = (state, action) => {
             return {
                 ...state,
                 items: action.payload
+            }
+        case 'TOGGLE_MODAL':
+            return {
+                ...state,
+                showModal: action.payload
             }
         default:
             return state;

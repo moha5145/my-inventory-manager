@@ -5,7 +5,9 @@ export const initialState = {
         { id: 3, label: 'Tablets', value: 'Tablets' },
     ],
     isLoading: false,
-    error: null
+    error: null,
+    newCategory: {},
+    // showModal: false
 }
 
 export const categoriesReducer = (state, action) => {
@@ -21,10 +23,16 @@ export const categoriesReducer = (state, action) => {
                ...state,
                 categories:  action.payload
             }
+        case 'ON_CHANGE_CATEGORY':
+            return {
+               ...state,
+                newCategory:  action.payload
+            }
         case 'ADD_CATEGORY':
             return {
                ...state,
-                categories:  [action.payload, ...state.items]
+                categories:  [...state.categories, action.payload],
+                newCategory: {}
             }
         case 'UPDATE_CATEGORIES':
             return {

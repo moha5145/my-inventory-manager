@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import slugify from 'slugify';
 
-import { SelectInput, TextInput } from '../../../shared/CustomInputs';
-import { useNavigate } from 'react-router-dom';
+import { TextInput } from '../../../shared/CustomInputs';
 import OutlineBtn from '../../customButtons/OutlineBtn';
 import ColoredBtn from '../../customButtons/ColoredBtn';
+import SimpleModal from '../../custom/SimpleModal';
 
-const AddItem = ({handleAddItem, flexType = 'col', categoriesState}) => {
+const AddItem = ({handleAddItem, flexType = 'col', categoriesState, toggleModal, itemsState, onChangeCategory, addCategory}) => {
 
     const navigate = useNavigate();
 
@@ -22,6 +23,13 @@ const AddItem = ({handleAddItem, flexType = 'col', categoriesState}) => {
         editing: false, 
     });
     
+    const selectChangeHandler = (e) => {
+        if (e.target.value === '') {
+            toggleModal(true)
+        }
+        setItem({ ...item, category: e.target.value })
+    }  
+
   return (
     <form className=' w-full' 
         onSubmit={(e) => {
@@ -56,39 +64,48 @@ const AddItem = ({handleAddItem, flexType = 'col', categoriesState}) => {
             value={item.brand}
         />
 
-        {/* <TextInput
-            placeholder='Category'
-            type="text"
-            onChange={(e) => setItem({...item, category: e.target.value})}
-            value={item.category}
-        /> */}
-        <SelectInput
-            name='categories'
-            onChange={(e) => setItem({...item, category: e.target.value})}
-            value={item.category}
-            options={categoriesState.categories}
-        />
-
         <select
             name="categories"
             id=""
             value={item.category || 'category'}
-            onChange={(e) => setItem({...item, category: e.target.value})}
+            onChange={selectChangeHandler}
             className='w-full border-2 bg-white outline-orange-400 rounded-md p-2'
         >
             <option value="">Select a category</option>
-
-                <TextInput
-                    placeholder='Category'
-                    type="text"
-                    onChange={(e) => setItem({...item, category: e.target.value})}
-                    value={item.category}
-                />
-            {categoriesState.categories.map((category ) => {
+            {categoriesState.categories.map((category) => {
                 return <option value={category.value}>{category.label}</option>
             })}
-            <button >Add Category</button>
+        
+            <option value="" className='text-xl text-emerald-500 font-bold text-center cursor-pointer py-2 h-16'>
+                <span className=' h-20 cursor-pointer py-2'>
+                + Add new
+                </span>
+            </option>
         </select>
+
+        <SimpleModal
+            state={itemsState}
+            toggleModal={toggleModal}
+            modalTitle="Add Category"
+            cancelBtnText="Cancel"
+            confirmBtnText="Add"
+            onAdd={() => {
+                addCategory(categoriesState.newCategory)
+                toggleModal(false)
+            }}
+            onCancel={() => toggleModal(false)}
+        >
+            <TextInput 
+                placeholder='Category Name'
+                type="text"
+                onChange={(e) => {
+
+                    onChangeCategory({ id: categoriesState.categories.length + 1, label: e.target.value, value: e.target.value } )
+                }}
+                value={categoriesState.newCategory.value}
+            />
+
+        </SimpleModal>
 
         <TextInput
             placeholder='Model'

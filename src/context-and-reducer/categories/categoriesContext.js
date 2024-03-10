@@ -1,11 +1,19 @@
 import { createContext, useReducer } from "react";
-import { initialState, categoriesReducer } from './categoriesReducer';
 import axios from "axios";
+
+import { initialState, categoriesReducer } from './categoriesReducer';
 
 export const CategoriesContext = createContext();
 
 export const CategoriesProvider = ({ children }) => {
     const [categoriesState, categoriesDispatch] = useReducer(categoriesReducer, initialState);
+
+    const onChangeCategory = (value) => {
+        categoriesDispatch({ type: 'ON_CHANGE_CATEGORY', payload: value })
+    }
+    const addCategory = (value) => {
+        categoriesDispatch({ type: 'ADD_CATEGORY', payload: value })
+    }
 
     const handleAddItem = async (item) => {
         console.log('item from handleAddItem', item)
@@ -43,7 +51,6 @@ export const CategoriesProvider = ({ children }) => {
             const response = await axios.put(`${process.env.REACT_APP_API_URL}/item/update/${item._id}`, item);
             const updatedItems = categoriesState.items.map((i) => i._id === item._id ? response.data : i)
             // categoriesDispatch({ type: 'UPDATE_ITEMS', payload: updatedItems })
-            console.log('response.data', response.data)
             categoriesDispatch({ type: 'UPDATE_ITEMS', payload: updatedItems})
         } catch (error) {
             console.log('error', error)
@@ -102,7 +109,9 @@ export const CategoriesProvider = ({ children }) => {
         deleteItem,
         updateTemporaryNewStock,
         resetTemporaryNewStock,
-        confirmTemporaryStock
+        confirmTemporaryStock,
+        addCategory,
+        onChangeCategory
     }
 
     return (

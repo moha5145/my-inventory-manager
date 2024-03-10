@@ -11,11 +11,12 @@ import { SearchInput } from '../../shared/CustomInputs';
 import OutlineLink from '../customLinks/OutlineBtn';
 
 const Items = () => {
-    const { itemsState, getItems, saveUpdate, itemsDispatch, handleAddItem, updateItem, deleteItem } = useContext(ItemsContext);
-    const { categoriesState } = useContext(CategoriesContext);
+    const { itemsState, getItems, saveUpdate, itemsDispatch, handleAddItem, updateItem, deleteItem, toggleModal } = useContext(ItemsContext);
+    const { categoriesState, onChangeCategory, addCategory } = useContext(CategoriesContext);
 
     useEffect(() => {
         getItems();
+        // eslint-disable-next-line 
     }, []);
     
     return (
@@ -26,6 +27,10 @@ const Items = () => {
                         handleAddItem={handleAddItem}
                         flexType="row"
                         categoriesState={categoriesState}
+                        toggleModal={toggleModal}
+                        itemsState={itemsState}
+                        onChangeCategory={onChangeCategory}
+                        addCategory={addCategory}
                     />
                 </div>
 

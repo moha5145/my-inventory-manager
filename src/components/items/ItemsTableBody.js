@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { TextInput } from '../../shared/CustomInputs';
-import ColoredBtn from '../customButtons/ColoredBtn';
-import ColoredLink from '../customLinks/ColoredLink';
+import ActionsBlock from './ActionsBlock';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
@@ -108,35 +107,12 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem, saveUpdate}) => {
                     <td className='w-full sm:w-52 h-12 border-grey-light border hover:bg-gray-100 pb-0'>
                         <div className="flex justify-center gap-1 ">
 
-                            <ColoredLink
-                                to={`/item-details/${item.slug} `}
-                                state={item}
-                                text='Show'
-                                bgColor='bg-yellow-400'
-                                textColor='text-white'
-                            />
-                            { !item.editing ?
-                                <ColoredBtn
-                                    onClick={() => updateItem(!item.editing, index, "editing")}
-                                    text='Edit'
-                                    bgColor='bg-blue-400'
-                                />
-                                :      
-                                <ColoredBtn
-                                    onClick={() => {
-                                        handleSave(item, index)
-                                        // updateItem(!item.editing, index, "editing")
-                                    }}
-                                    text='Save'
-                                    bgColor='bg-orange-400'
-                                />
-                            }
-
-                            <ColoredBtn
-                                text='Delete'
-                                px='px-2'
-                                bgColor='bg-red-400'
-                                onClick={() => deleteItem(item)}
+                           <ActionsBlock
+                                item={item}
+                                updateItem={updateItem}
+                                index={index}
+                                handleSave={handleSave} 
+                                deleteItem={deleteItem}
                             />
                         </div>
                     </td>
