@@ -12,10 +12,11 @@ import OutlineLink from '../customLinks/OutlineBtn';
 
 const Items = () => {
     const { itemsState, getItems, saveUpdate, itemsDispatch, handleAddItem, updateItem, deleteItem, toggleModal } = useContext(ItemsContext);
-    const { categoriesState, onChangeCategory, addCategory } = useContext(CategoriesContext);
+    const { categoriesState, getCategories, onChangeCategory, addCategory } = useContext(CategoriesContext);
 
     useEffect(() => {
         getItems();
+        getCategories()
         // eslint-disable-next-line 
     }, []);
     

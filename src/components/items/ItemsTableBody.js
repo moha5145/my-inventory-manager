@@ -14,7 +14,7 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
                     type={type}
                     placeholder={placeholder}
                     onChange={(e) => updateItem(e.target.value, index, name)}
-                    value={value}
+                    defaultValue={value}
                 />
                 ) :
                 <span className='' >

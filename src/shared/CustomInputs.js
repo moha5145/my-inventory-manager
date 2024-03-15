@@ -2,7 +2,7 @@ import React from 'react';
 
 import { MdSearch } from "react-icons/md";
 
-export const TextInput = ({placeholder, onChange, value, type, name=''}) => {
+export const TextInput = ({placeholder, onChange, defaultValue = '', type, name=''}) => {
   return (
     <div className=' w-full h-10'>
       <input
@@ -12,7 +12,7 @@ export const TextInput = ({placeholder, onChange, value, type, name=''}) => {
         autoFocus
         className='w-full h-full pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400'
         onChange={onChange}
-        value={value}
+        defaultValue={defaultValue}
       />
     </div>
   );

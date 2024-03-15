@@ -9,7 +9,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                 {supplier.editing ? (
                     <div className='mb-1'>
                         <TextInput
-                            value={supplier.name}
+                            defaultValue={supplier.name}
                             onChange={(e) => {updateSupplier(index, 'name', e.target.value)}}
                         />
                     </div> )
@@ -19,7 +19,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                 {supplier.editing ? (
                     <div className='mb-1'>
                         <TextInput
-                            value={supplier.contactPerson}
+                            defaultValue={supplier.contactPerson}
                             onChange={(e) => {updateSupplier(index, 'contactPerson', e.target.value)}}
                         />
                     </div> )
@@ -29,7 +29,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                 {supplier.editing ? (
                     <div className='mb-1'>
                         <TextInput
-                            value={supplier.address}
+                            defaultValue={supplier.address}
                             onChange={(e) => {updateSupplier(index, 'address', e.target.value)}}
                         />
                     </div> )
@@ -39,7 +39,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                 {supplier.editing ? (
                     <div className='mb-1'>
                         <TextInput
-                            value={supplier.phone}
+                            defaultValue={supplier.phone}
                             onChange={(e) => {updateSupplier(index, 'phone', e.target.value)}}
 
                         />
@@ -50,7 +50,7 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                 {supplier.editing ? (
                     <div className='mb-1'>
                         <TextInput
-                            value={supplier.email}
+                            defaultValue={supplier.email}
                             onChange={(e) => {updateSupplier(index, 'email', e.target.value)}}
                         />
                     </div> )
@@ -60,8 +60,8 @@ const SuppliersList = ({currentSuppliers, deleteSupplier, updateSupplier}) => {
                 {supplier.editing ? (
                     <div className="mb-1">
                         <TextInput
-                        value={supplier.website}
-                        onChange={(e) => {updateSupplier(index, 'website', e.target.value)}}
+                            defaultValue={supplier.website}
+                            onChange={(e) => {updateSupplier(index, 'website', e.target.value)}}
                     />
                     </div> )
                     : <p>Website: <a href={supplier.website} className="text-blue-500 hover:underline">{supplier.website}</a></p>

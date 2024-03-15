@@ -1,46 +1,116 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { MdEdit, MdDelete, MdAdd, MdSave, MdCancel } from 'react-icons/md';
+
+import { CategoriesContext } from '../../context-and-reducer/categories/categoriesContext';
+
+import { TextInput } from '../../shared/CustomInputs';
+import IconBtn from '../customButtons/IconBtn';
+
+  const isValueChanged = (category) => {
+    return category.label === category.newCategory || category.newCategory === '';
+  }
 
 const Categories = () => {
-  const [categories, setCategories] = useState([
-    { _id: 1, name: 'Smartphones' },
-    { _id: 2, name: 'Accessories' },
-    { _id: 3, name: 'Tablets' },
-    // Ajoutez d'autres catégories si nécessaire
-  ]);
+  const { categoriesState, onChangeCategory, onChangeCategoryUpdate, addCategory, getCategories, updateCategory, saveUpdate, deleteCategory } = useContext(CategoriesContext);
 
-  const [newCategory, setNewCategory] = useState('');
+  useEffect(() => {
+    getCategories();
+    // eslint-disable-next-line
+  }, []);
 
   const handleChange = (e) => {
-    setNewCategory(e.target.value);
+    onChangeCategory(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newCategory.trim() !== '') {
-      const newCategoryObj = {
-        _id: categories.length + 1,
-        name: newCategory.trim()
-      };
-      setCategories([...categories, newCategoryObj]);
-      setNewCategory('');
-    }
+    addCategory(categoriesState.newCategory);
+  };
+
+  const handleCancel = (index, category) => {
+    updateCategory(index, 'editing', !category.editing);
+    updateCategory(index, 'newCategory', '');
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-8 p-4 bg-white shadow-md rounded-md">
+    <div className="max-w-lg mx-auto mt-8 p-0 sm:p-4 bg-white rounded-md">
       <h2 className="text-xl font-semibold mb-4">Categories Management</h2>
       <form onSubmit={handleSubmit}>
-        <div className="flex items-center">
-          <input type="text" value={newCategory} onChange={handleChange} placeholder="New Category" className="w-full mr-2 p-2 border border-gray-300 rounded-md" />
-          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add Category</button>
+        <div className="flex items-center gap-2">
+          <input
+            type="text" 
+            value={categoriesState.newCategory}
+            onChange={handleChange}
+            className="w-full h-9 pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400"
+          />
+
+          <IconBtn
+            Icon={MdAdd}
+            type="submit"
+            bgColor="bg-blue-500"
+            textColor="text-white"
+            w="w-24"
+          />
         </div>
       </form>
-      <ul className="mt-4">
-        {categories.map(category => (
-          <li key={category._id} className="flex items-center justify-between border-b border-gray-200 py-2">
-            <Link to={`/categories/${category.id}`} className="text-blue-500 hover:underline">{category.name}</Link>
-            <button className="px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">Delete</button>
+      <ul className="mt-4 space-y-2">
+        {categoriesState.categories.map((category, index) => (
+          <li key={category._id} className="flex items-center justify-between px-1 bg-gray-100 border-b border-gray-200 py-2 hover:bg-blue-50">
+            {category.editing ? (
+              <TextInput
+                type="text"
+                defaultValue={category.label}
+                onChange={(e) => onChangeCategoryUpdate(index, 'newCategory', e.target.value)}
+              />
+            ) : (
+              <Link
+                to={`/categories/${category.id}`}
+                className="text-sm sm:text-md w-full h-full"
+              >
+                {category.label}
+              </Link>
+            )}
+
+            <div className="flex gap-1">
+              {category.editing ? (
+                <div className="flex">
+                  <IconBtn
+                    Icon={MdCancel}
+                    bgColor="bg-white"
+                    textColor="text-red-400"
+                    px="px-2"
+                    onClick={() => handleCancel(index, category)}
+                  />
+
+                  {!isValueChanged(category) && (
+                    <IconBtn
+                      Icon={MdSave}
+                      bgColor="bg-white"
+                      textColor="text-green-400"
+                      px="px-2"
+                      onClick={() => saveUpdate(category._id, category.newCategory)}
+                    />
+                  )}
+                </div>
+              ) : (
+                <IconBtn
+                  Icon={MdEdit}
+                  bgColor="bg-white"
+                  textColor="text-orange-400"
+                  px="px-2"
+                  onClick={() => updateCategory(index, 'editing', !category.editing)}
+                />
+              )}
+
+              <IconBtn
+                Icon={MdDelete}
+                bgColor="bg-white"
+                textColor="text-red-400"
+                px="px-2"
+                onClick={() => deleteCategory(category) }
+              />
+            </div>
           </li>
         ))}
       </ul>

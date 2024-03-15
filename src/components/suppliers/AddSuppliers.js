@@ -37,7 +37,7 @@ const AddSupplier = ({ addSupplier }) => {
                 type="text"
                 name="name"
                 placeholder="Supplier Name"
-                value={formData.name}
+                defaultValue={formData.name}
                 onChange={handleChange}
             />
         </div>
@@ -46,7 +46,7 @@ const AddSupplier = ({ addSupplier }) => {
             type="text"
             name="contactPerson"
             placeholder="Contact Person"
-            value={formData.contactPerson}
+            defaultValue={formData.contactPerson}
             onChange={handleChange}
         />
         
@@ -54,7 +54,7 @@ const AddSupplier = ({ addSupplier }) => {
             type="text"
             name="address"
             placeholder="Address"
-            value={formData.address}
+            defaultValue={formData.address}
             onChange={handleChange}
         />
         
@@ -62,7 +62,7 @@ const AddSupplier = ({ addSupplier }) => {
             type="tel"
             name="phone"
             placeholder="Phone Number"
-            value={formData.phone}
+            defaultValue={formData.phone}
             onChange={handleChange}
         />
 
@@ -70,7 +70,7 @@ const AddSupplier = ({ addSupplier }) => {
             type="email"
             name="email"
             placeholder="Email"
-            value={formData.email}
+            defaultValue={formData.email}
             onChange={handleChange}
         />
         
@@ -78,7 +78,7 @@ const AddSupplier = ({ addSupplier }) => {
             type="text"
             name="website"
             placeholder="Website"
-            value={formData.website}
+            defaultValue={formData.website}
             onChange={handleChange}
         />
         

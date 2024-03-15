@@ -1,12 +1,8 @@
 export const initialState = {
-    categories: [
-        { id: 1, label: 'Smartphones', value: 'Smartphones' },
-        { id: 2, label: 'Accessories', value: 'Accessories' },
-        { id: 3, label: 'Tablets', value: 'Tablets' },
-    ],
+    categories: [],
     isLoading: false,
     error: null,
-    newCategory: {},
+    newCategory: '',
     // showModal: false
 }
 
@@ -28,11 +24,16 @@ export const categoriesReducer = (state, action) => {
                ...state,
                 newCategory:  action.payload
             }
+        case 'CLEAR_NEW_CATEGORY':
+            return {
+               ...state,
+                newCategory:  ''
+            }
         case 'ADD_CATEGORY':
             return {
                ...state,
                 categories:  [...state.categories, action.payload],
-                newCategory: {}
+                newCategory: ''
             }
         case 'UPDATE_CATEGORIES':
             return {

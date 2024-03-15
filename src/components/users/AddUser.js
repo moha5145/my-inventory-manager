@@ -38,7 +38,7 @@ const AddUser = ({addUser}) => {
                 type="text"
                 placeholder="Username"
                 onChange={handleChange}
-                value={formData.username}
+                defaultValue={formData.username}
                 name="username"
             />
 
@@ -46,7 +46,7 @@ const AddUser = ({addUser}) => {
                 type="text"
                 placeholder="First Name"
                 onChange={handleChange}
-                value={formData.firstName}
+                defaultValue={formData.firstName}
                 name="firstName"
             />
 
@@ -54,7 +54,7 @@ const AddUser = ({addUser}) => {
                 type="text"
                 placeholder="Last Name"
                 onChange={handleChange}
-                value={formData.lastName}
+                defaultValue={formData.lastName}
                 name="lastName"
             />  
 
@@ -62,14 +62,14 @@ const AddUser = ({addUser}) => {
                 type="email"
                 placeholder="Email"
                 onChange={handleChange}
-                value={formData.email}
+                defaultValue={formData.email}
                 name="email"
             />          
     
         
             <SelectInput
                 onChange={handleChange}
-                value={formData.role}
+                defaultValue={formData.role}
                 name="role"
                 options={[
                     {label: 'Select Role', value: ''},

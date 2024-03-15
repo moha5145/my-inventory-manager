@@ -54,14 +54,14 @@ const AddItem = ({handleAddItem, flexType = 'col', categoriesState, toggleModal,
             placeholder='Name'
             type="text"
             onChange={(e) => setItem({...item, name: e.target.value, slug: slugify(e.target.value, {lower: true})})}
-            value={item.name}
+            defaultValue={item.name}
         />
 
         <TextInput
             placeholder='Brand'
             type="text"
             onChange={(e) => setItem({...item, brand: e.target.value})}
-            value={item.brand}
+            defaultValue={item.brand}
         />
 
         <select
@@ -99,10 +99,9 @@ const AddItem = ({handleAddItem, flexType = 'col', categoriesState, toggleModal,
                 placeholder='Category Name'
                 type="text"
                 onChange={(e) => {
-
-                    onChangeCategory({ id: categoriesState.categories.length + 1, label: e.target.value, value: e.target.value } )
+                    onChangeCategory( e.target.value )
                 }}
-                value={categoriesState.newCategory.value}
+                defaultValue={categoriesState.newCategory.label}
             />
 
         </SimpleModal>
@@ -111,14 +110,14 @@ const AddItem = ({handleAddItem, flexType = 'col', categoriesState, toggleModal,
             placeholder='Model'
             type="text"
             onChange={(e) => setItem({...item, model: e.target.value})}
-            value={item.model}
+            defaultValue={item.model}
         />    
 
         <TextInput
             placeholder='Serial N°'
             type="number"
             onChange={(e) => setItem({...item, serialNumber: e.target.value})}
-            value={item.serialNumber}
+            defaultValue={item.serialNumber}
         />
 
         <div className='flex gap-2'>

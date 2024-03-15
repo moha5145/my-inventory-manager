@@ -1,11 +1,13 @@
 import React from 'react';
 import Categories from '../components/categories/Categories';
+import { CategoriesProvider } from '../context-and-reducer/categories/categoriesContext';
 
 const CategoriesPage = () => {
   return (
     <>
-      <p>CategoriesPage</p>
-      <Categories />
+      <CategoriesProvider>
+        <Categories />
+      </CategoriesProvider>
     </>
   );
 };
