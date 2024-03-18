@@ -18,7 +18,8 @@ const ItemsTableHead = ({itemsState}) => {
     <thead className="w-full text-white sm:[&>*:not(:first-child)]:hidden">
         { itemsState.items.map((item) => {
           return ( 
-            <tr key={item._id} className="px-1  bg-blue-400 flex flex-col flex-no wrap justify-center sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
+            <tr key={item._id}
+              className="px-1  bg-blue-400 flex flex-col flex-no wrap justify-center sm:table-row rounded-l-lg sm:rounded-none mb-5 sm:mb-0">
               <TableHeader />
             </tr>
           )})

@@ -60,7 +60,7 @@ const Categories = () => {
             {category.editing ? (
               <TextInput
                 type="text"
-                defaultValue={category.label}
+                value={category.label}
                 onChange={(e) => onChangeCategoryUpdate(index, 'newCategory', e.target.value)}
               />
             ) : (
@@ -77,7 +77,7 @@ const Categories = () => {
                 <div className="flex">
                   <IconBtn
                     Icon={MdCancel}
-                    bgColor="bg-white"
+                    bgColor="bg-transparent"
                     textColor="text-red-400"
                     px="px-2"
                     onClick={() => handleCancel(index, category)}
@@ -86,7 +86,7 @@ const Categories = () => {
                   {!isValueChanged(category) && (
                     <IconBtn
                       Icon={MdSave}
-                      bgColor="bg-white"
+                      bgColor="bg-transparent"
                       textColor="text-green-400"
                       px="px-2"
                       onClick={() => saveUpdate(category._id, category.newCategory)}
@@ -96,7 +96,7 @@ const Categories = () => {
               ) : (
                 <IconBtn
                   Icon={MdEdit}
-                  bgColor="bg-white"
+                  bgColor="bg-transparent"
                   textColor="text-orange-400"
                   px="px-2"
                   onClick={() => updateCategory(index, 'editing', !category.editing)}
@@ -105,7 +105,7 @@ const Categories = () => {
 
               <IconBtn
                 Icon={MdDelete}
-                bgColor="bg-white"
+                bgColor="bg-transparent"
                 textColor="text-red-400"
                 px="px-2"
                 onClick={() => deleteCategory(category) }

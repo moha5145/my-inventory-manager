@@ -7,10 +7,17 @@ export const ItemsContext = createContext();
 export const ItemsProvider = ({ children }) => {
     const [itemsState, itemsDispatch] = useReducer(itemsReducer, initialState);
 
+    const onChangeItem = (name, value) => {
+        const updatedItem = {...itemsState.item};
+        updatedItem[name] = value
+        itemsDispatch({ type: 'UPDATE_ITEM', payload: updatedItem })
+    }
+        
     const handleAddItem = async (item) => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/create`, item);
             itemsDispatch({ type: 'ADD_ITEM', payload: response.data })
+            itemsDispatch({ type: 'CLEAR_ITEM'})
         } catch (error) {
             console.log('error', error)
         }
@@ -98,6 +105,7 @@ export const ItemsProvider = ({ children }) => {
     const value = {
         itemsState,
         itemsDispatch,
+        onChangeItem,
         handleAddItem,
         getItems,
         updateItem,

@@ -7,7 +7,7 @@ const TableCell = ({editing, value, onChange}) => {
     return (
         <td className='w-full border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
             { editing ? <TextInput
-                    defaultValue={value}
+                    value={value}
                     onChange={onChange}
                 />
                 : <span> {value} </span>

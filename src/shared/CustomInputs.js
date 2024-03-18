@@ -2,7 +2,7 @@ import React from 'react';
 
 import { MdSearch } from "react-icons/md";
 
-export const TextInput = ({placeholder, onChange, defaultValue = '', type, name=''}) => {
+export const TextInput = ({placeholder, onChange, value = '', type, name=''}) => {
   return (
     <div className=' w-full h-10'>
       <input
@@ -12,7 +12,7 @@ export const TextInput = ({placeholder, onChange, defaultValue = '', type, name=
         autoFocus
         className='w-full h-full pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400'
         onChange={onChange}
-        defaultValue={defaultValue}
+        value={value}
       />
     </div>
   );
@@ -70,12 +70,12 @@ export const SearchInput = ({placeholder, onChange, value, type}) => {
   );
 };
 
-export const SelectInput = ({name, onChange, defaultValue, options = []}) => {
+export const SelectInput = ({name, onChange, value, options = []}) => {
   return (
     <div className=' min-w-22 h-10'>
       <select
         name={name}
-        defaultValue={defaultValue}
+        value={value}
         onChange={onChange}
         className="w-full border outline-orange-400 rounded-md p-2"
       > 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { TextInput } from '../../shared/CustomInputs';
 import ActionsBlock from './ActionsBlock';
+import SelectCategory from './shared/SelectCategory';
 
 const TableCell = ({value, editing = false, index, name, updateItem, type, placeholder}) => {
     return (
@@ -14,7 +15,7 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
                     type={type}
                     placeholder={placeholder}
                     onChange={(e) => updateItem(e.target.value, index, name)}
-                    defaultValue={value}
+                    value={value}
                 />
                 ) :
                 <span className='' >
@@ -26,10 +27,9 @@ const TableCell = ({value, editing = false, index, name, updateItem, type, place
     )
 }
 
-const ItemsTableBody = ({itemsState, updateItem, deleteItem, saveUpdate}) => {
+const ItemsTableBody = ({itemsState, onChangeItem, updateItem, deleteItem, saveUpdate, toggleModal, categoriesState, addCategory, onChangeCategory}) => {
 
     const handleSave = (item, index) => {
-        // updateItem(index, 'editing', false)
         saveUpdate(item, index)
         updateItem(!item.editing, index, "editing")
     }
@@ -71,6 +71,28 @@ const ItemsTableBody = ({itemsState, updateItem, deleteItem, saveUpdate}) => {
                         index={index}
                         updateItem={updateItem}
                     />
+                    
+                    <td className='w-full sm:w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
+                        { item.editing ? 
+                            <SelectCategory
+                                item={item}
+                                toggleModal={toggleModal}
+                                categoriesState={categoriesState}
+                                itemsState={itemsState}
+                                addCategory={addCategory}
+                                onChange={(e) => {
+                                    e.target.value === '' ? toggleModal(true) :
+                                    updateItem(e.target.value, index, 'category')
+                                }}
+                                onChangeItem={onChangeItem}
+                                onChangeCategory={onChangeCategory}
+                            /> 
+                            :
+                            <span className='' >
+                                { item.category }
+                            </span>
+                        }
+                    </td>
 
                     <TableCell
                         name="model"

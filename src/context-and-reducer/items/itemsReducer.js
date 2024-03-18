@@ -1,5 +1,15 @@
 export const initialState = {
     items: [],
+    item:{
+        name: '',
+        brand: '',
+        category: '',
+        model: '',
+        stock: 0,
+        newStock: 0,
+        serialNumber: '',
+        editing: false, 
+    },
     isLoading: false,
     error: null, 
     showModal: false
@@ -22,6 +32,25 @@ export const itemsReducer = (state, action) => {
             return {
                ...state,
                 items:  [action.payload, ...state.items]
+            }
+        case 'CLEAR_ITEM':
+            return {
+               ...state,
+                item: {
+                    name: '',
+                    brand: '',
+                    category: '',
+                    model: '',
+                    stock: 0,
+                    newStock: 0,
+                    serialNumber: '',
+                    editing: false, 
+                },
+            }
+        case 'UPDATE_ITEM':
+            return {
+               ...state,
+                item: action.payload
             }
         case 'UPDATE_ITEMS':
             return {

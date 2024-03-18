@@ -11,7 +11,7 @@ import { SearchInput } from '../../shared/CustomInputs';
 import OutlineLink from '../customLinks/OutlineBtn';
 
 const Items = () => {
-    const { itemsState, getItems, saveUpdate, itemsDispatch, handleAddItem, updateItem, deleteItem, toggleModal } = useContext(ItemsContext);
+    const { itemsState, getItems, onChangeItem, saveUpdate, itemsDispatch, handleAddItem, updateItem, deleteItem, toggleModal } = useContext(ItemsContext);
     const { categoriesState, getCategories, onChangeCategory, addCategory } = useContext(CategoriesContext);
 
     useEffect(() => {
@@ -31,6 +31,7 @@ const Items = () => {
                         toggleModal={toggleModal}
                         itemsState={itemsState}
                         onChangeCategory={onChangeCategory}
+                        onChangeItem={onChangeItem}
                         addCategory={addCategory}
                     />
                 </div>
@@ -71,6 +72,11 @@ const Items = () => {
                             updateItem={updateItem}
                             deleteItem={deleteItem}
                             saveUpdate={saveUpdate}
+                            categoriesState={categoriesState}
+                            addCategory={addCategory}
+                            onChangeItem={onChangeItem}
+                            onChangeCategory={onChangeCategory}
+                            toggleModal={toggleModal}
                         />
                     </table>
                 </div>
