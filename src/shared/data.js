@@ -2,7 +2,7 @@ import { MdPerson, MdPerson2, MdOutlineDevicesOther, MdCategory, MdDashboard, Md
 import { TbArrowBarUp, TbArrowBarToDown } from "react-icons/tb";
 
 export const data = [
-    { name: "Items", path: "/items", icon: MdOutlineDevicesOther},
+    { name: "Item List", path: "/items", icon: MdOutlineDevicesOther},
     { name: "Stock In", path: "/stock-in", icon: TbArrowBarToDown},
     { name: "Stock Out", path: "/stock-out", icon: TbArrowBarUp},
     { name: "Categories", path: "/categories", icon: MdCategory}, 

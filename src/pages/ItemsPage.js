@@ -2,14 +2,14 @@ import React from 'react';
 import { ItemsProvider } from '../context-and-reducer/items/itemsContext';
 import { CategoriesProvider } from '../context-and-reducer/categories/categoriesContext';
 
-import Items from '../components/items/Items';
+import ItemList from '../components/items/ItemList';
 
 const ItemsPage = () => {
   return (
     <section>
       <ItemsProvider>
         <CategoriesProvider>
-          <Items />
+          <ItemList />
         </CategoriesProvider>
       </ItemsProvider>
     </section>

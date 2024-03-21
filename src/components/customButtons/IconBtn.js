@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconBtn = ({ Icon,  onClick, w = 'full', bgColor = 'bg-blue-400', textColor = 'text-white', px = 'px-2' }) => {
+const IconBtn = ({ Icon,  onClick, w = 'full', bgColor = 'bg-blue-400', textColor ='text-white', borderColor = 'border-blue-400', px = 'px-2' }) => {
     return (
         <button
             onClick={onClick}
@@ -10,7 +10,9 @@ const IconBtn = ({ Icon,  onClick, w = 'full', bgColor = 'bg-blue-400', textColo
                 ${px}
                 py-1
                 w-${w}
-                hover:opacity-70
+                hover:border
+                hover:bg-gray-100
+                ${borderColor}
                 rounded-md
             `}
         >

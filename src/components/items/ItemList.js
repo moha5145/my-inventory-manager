@@ -10,7 +10,7 @@ import AddItem from './item/AddItemInputs';
 import { SearchInput } from '../../shared/CustomInputs';
 import OutlineLink from '../customLinks/OutlineBtn';
 
-const Items = () => {
+const ItemList = () => {
     const { itemsState, getItems, onChangeItem, saveUpdate, itemsDispatch, handleAddItem, updateItem, deleteItem, toggleModal } = useContext(ItemsContext);
     const { categoriesState, getCategories, onChangeCategory, addCategory } = useContext(CategoriesContext);
 
@@ -40,15 +40,15 @@ const Items = () => {
                     <OutlineLink
                         to='/items/create'
                         text={'+ Add Item'}
-                        // bgColor='bg-gray-400'
                         textColor='text-gray-500'
                         px='px-2'
                     />
                 </div>
 
                 {/* <Modal btnText="Add Item" id={"add-item-modal"}>
-        <AddItem handleAddItem={handleAddItem}/>
-      </Modal> */}
+                    <AddItem handleAddItem={handleAddItem}/>
+                    </Modal> 
+                */}
 
                 <div className="container w-full gap-4 mt-2 sm:mt-0">
                     <p className='sm:hidden text-2xl'>Items List</p>
@@ -84,4 +84,4 @@ const Items = () => {
     );
 };
 
-export default Items;
+export default ItemList;

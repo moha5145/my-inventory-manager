@@ -126,7 +126,7 @@ const ItemsTableBody = ({itemsState, onChangeItem, updateItem, deleteItem, saveU
                             </span>
                         </div>
                     </td>
-                    <td className='w-full sm:w-52 h-12 border-grey-light border hover:bg-gray-100 pb-0'>
+                    <td className='w-full sm:w-52 h-12 border-grey-light border pb-0'>
                         <div className="flex justify-center gap-1 ">
 
                            <ActionsBlock

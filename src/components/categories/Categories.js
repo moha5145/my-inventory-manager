@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MdEdit, MdDelete, MdAdd, MdSave, MdCancel } from 'react-icons/md';
+import { MdEdit, MdDelete, MdSave, MdCancel } from 'react-icons/md';
 
 import { CategoriesContext } from '../../context-and-reducer/categories/categoriesContext';
 
-import { TextInput } from '../../shared/CustomInputs';
 import IconBtn from '../customButtons/IconBtn';
+import AddCategory from './AddCategory';
 
   const isValueChanged = (category) => {
-    return category.label === category.newCategory || category.newCategory === '';
+    return category.value === category.newCategory || category.newCategory === '';
   }
 
 const Categories = () => {
@@ -19,15 +19,6 @@ const Categories = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleChange = (e) => {
-    onChangeCategory(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addCategory(categoriesState.newCategory);
-  };
-
   const handleCancel = (index, category) => {
     updateCategory(index, 'editing', !category.editing);
     updateCategory(index, 'newCategory', '');
@@ -36,32 +27,20 @@ const Categories = () => {
   return (
     <div className="max-w-lg mx-auto mt-8 p-0 sm:p-4 bg-white rounded-md">
       <h2 className="text-xl font-semibold mb-4">Categories Management</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="flex items-center gap-2">
-          <input
-            type="text" 
-            value={categoriesState.newCategory}
-            onChange={handleChange}
-            className="w-full h-9 pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400"
-          />
-
-          <IconBtn
-            Icon={MdAdd}
-            type="submit"
-            bgColor="bg-blue-500"
-            textColor="text-white"
-            w="w-24"
-          />
-        </div>
-      </form>
+      <AddCategory
+        addCategory={addCategory}
+        onChange={onChangeCategory}
+        categoriesState={categoriesState}
+      />
       <ul className="mt-4 space-y-2">
         {categoriesState.categories.map((category, index) => (
           <li key={category._id} className="flex items-center justify-between px-1 bg-gray-100 border-b border-gray-200 py-2 hover:bg-blue-50">
             {category.editing ? (
-              <TextInput
+              <input 
                 type="text"
-                value={category.label}
+                defaultValue={category.value}
                 onChange={(e) => onChangeCategoryUpdate(index, 'newCategory', e.target.value)}
+                className="w-full h-9 pl-1 mb-1 md:m-0 border border-gray-400 rounded-lg outline-orange-400"
               />
             ) : (
               <Link

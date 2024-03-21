@@ -6,23 +6,25 @@ import IconLink from '../customLinks/IconLink';
 
 const ActionsBlock = ({item, updateItem, index, handleSave, deleteItem}) => {
   return (
-    <div className="flex justify-center gap-1 w-full ">
+    <div className="flex justify-center gap-1 w-full hover:bg-white">
         <IconLink
             Icon={MdRemoveRedEye}
             to={`/item-details/${item.slug} `}
             state={item}
             text='Show'
-            bgColor='bg-blue-400'
-            textColor='text-white'
+            bgColor='bg-transparent'
+            borderColor='border-blue-400'
+            textColor='text-blue-400'
         />
 
         { !item.editing ?
-            
             <IconBtn
                 Icon={MdEdit}
                 onClick={() => updateItem(!item.editing, index, "editing")}
                 text='Edit'
-                bgColor='bg-orange-400'
+                textColor='text-orange-400'
+                borderColor='border-orange-400'
+                bgColor='bg-transparent'
             />
             :      
             <IconBtn
@@ -32,7 +34,9 @@ const ActionsBlock = ({item, updateItem, index, handleSave, deleteItem}) => {
                     // updateItem(!item.editing, index, "editing")
                 }}
                 text='Save'
-                bgColor='bg-green-400'
+                bgColor='bg-transparent-400'
+                textColor='text-green-400'
+                borderColor='border-green-400'
             />  
         }
 
@@ -40,7 +44,9 @@ const ActionsBlock = ({item, updateItem, index, handleSave, deleteItem}) => {
             Icon={MdDeleteForever}
             onClick={() => deleteItem(item)}
             text='Delete'
-            bgColor='bg-red-400'
+            bgColor='bg-transparent-400'
+            textColor='text-red-400'
+            borderColor='border-red-400'
         />
     </div>
   );
