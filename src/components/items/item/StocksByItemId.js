@@ -9,10 +9,10 @@ const StocksByItemId = ({stockState, state, addStock}) => {
         <p>Current Status</p>
         <h3 className='text-3xl text-center py-3'>{state.stock}</h3>
         <div className=' h-full'>
-            <div className='flex  pb-2'>
-                <button className='flex-1 border px-6' onClick={() => {addStock(state); navigate('/stock-in')}}>In</button>
-                <button className='flex-1 border px-6' onClick={() => {addStock(state); navigate('/stock-out')}}>Out</button>
-                <button className='flex-1 border px-6' onClick={() => {addStock(state); navigate('/stock-out')}}>Adjust</button>
+            <div className='w-full flex flex-wrap pb-2'>
+                <button className='flex-1 border mb-1' onClick={() => {addStock(state); navigate('/stock-in')}}>In</button>
+                <button className='flex-1 border mb-1' onClick={() => {addStock(state); navigate('/stock-out')}}>Out</button>
+                <button className='flex-1 border mb-1' onClick={() => {addStock(state); navigate('/stock-out')}}>Adjust</button>
             </div>
 
           {stockState.IsLoading ? <p>Loading...</p> :

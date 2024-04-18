@@ -61,16 +61,6 @@ const ItemsTableBody = ({itemsState, onChangeItem, updateItem, deleteItem, saveU
                         index={index}
                         updateItem={updateItem}
                     />
-
-                    <TableCell
-                        name="category"
-                        type="text"
-                        placeholder="Category"
-                        value ={item.category}
-                        editing={item.editing}
-                        index={index}
-                        updateItem={updateItem}
-                    />
                     
                     <td className='w-full sm:w-52 border-grey-light border hover:bg-gray-100 h-12 pl-1 leading-10'>
                         { item.editing ? 

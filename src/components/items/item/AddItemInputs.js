@@ -6,7 +6,7 @@ import OutlineBtn from '../../customButtons/OutlineBtn';
 import ColoredBtn from '../../customButtons/ColoredBtn';
 import SelectCategory from '../shared/SelectCategory';
 
-const AddItem = ({handleAddItem, flexType = 'col', categoriesState, toggleModal, itemsState, onChangeItem, onChangeCategory, addCategory}) => {
+const AddItemInputs = ({handleAddItem, flexType = 'col', categoriesState, toggleModal, itemsState, onChangeItem, onChangeCategory, addCategory}) => {
 
     const navigate = useNavigate();
     
@@ -99,4 +99,4 @@ const AddItem = ({handleAddItem, flexType = 'col', categoriesState, toggleModal,
     </form>
   );
 };
-export default AddItem;
+export default AddItemInputs;

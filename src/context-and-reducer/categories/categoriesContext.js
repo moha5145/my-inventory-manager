@@ -61,7 +61,7 @@ export const CategoriesProvider = ({ children }) => {
 
     const deleteCategory = async (payload) => {
         try {
-            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/category/delete/${payload._id}`);
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/category/delete/${payload._id}`, {category: payload});
             console.log('response.data', response.data)
             const updatedCategories = categoriesState.categories.filter((category, i) => category._id !== payload._id)
             categoriesDispatch({ type: 'DELETE_CATEGORIES', payload: updatedCategories })
