@@ -1,12 +1,13 @@
 import React from 'react';
-import TableHeader from './table/TableHader';
+
+import TableHeader from './table/TableHeader';
 import TableBody from './table/TableBody';
 
 const UsersList = ({usersState, deleteUser, updateUser}) => {
     return (
         <div className='w-full overflow-x-auto '>
 
-            <table className="table-fixed h-full sm:inline-block w-full flex flex-row flex-no-wrap bg-gray-100 rounded-lg  sm:shadow-lg my-5 px-2">
+            <table className="table-fixed h-full sm:inline-block w-full flex flex-row flex-no-wrap bg-gray-100 rounded-lg my-5 px-2">
                 <thead className="text-white sm:[&>*:not(:first-child)]:hidden w-full">
                     { usersState.users.map((_, index) => {
                         return (   
@@ -27,8 +28,7 @@ const UsersList = ({usersState, deleteUser, updateUser}) => {
                         );
                     })}
                 </tbody>
-            </table> 
-                    
+            </table>           
         </div>
     );
 };
